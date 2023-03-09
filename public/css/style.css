@@ -1,0 +1,27 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    min-width: 1140px;
+    background-color: #21201f;
+    /*background: #21201f url(/img/trianlify.jpg) no-repeat top center;*/
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    margin-bottom: -202px;
+}
+
+.page-wrapper::after {
+    content: "";
+
+    display: block;
+}
+
+.page-wrapper::after {
+    height: 85px;
+}
