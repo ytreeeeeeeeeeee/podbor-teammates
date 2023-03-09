@@ -84,15 +84,17 @@ main {
     align-items: center;
 }
 
-.user-profile {
+.user-profile,
+.request-profile {
     padding: 30px;
     background-color: #e68a01;
+    border-radius: 50px;
 }
 
-.user-info {
+.user-info,
+.request-info {
     display: flex;
     gap: 40px;
-    border-radius: 50px;
 }
 
 
@@ -126,14 +128,21 @@ main {
 }
 
 .user-role,
-.user-status {
+.user-status,
+.request-game {
     margin-top: 5px;
     background-color: white;
     border-radius: 30px;
     padding: 5px 20px;
 }
 
-.user-text {
+.request-game {
+    text-decoration: none;
+    color: black;
+}
+
+.user-text,
+.request-text {
     display: flex;
     font-size: 20px;
     line-height: 1.5;
@@ -156,13 +165,34 @@ main {
 .buttons {
     display: flex;
     gap: 20px;
+    margin-top: 40px;
+    justify-content: center;
+    align-items: center;
 }
 
 .button {
-    border-radius: 50%;
+    text-decoration: none;
+    padding: 10px 30px;
+    border-radius: 10px;
     background-color: black;
     color: white;
     font-size: 25px;
+}
+
+.games-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.game-card {
+    display: flex;
+    background-color: #e68a01;
+    max-width: 350px;
+    border-radius: 20px;
+    padding: 20px;
+    align-items: center;
 }
 
 /*FOOTER*/

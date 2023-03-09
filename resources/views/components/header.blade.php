@@ -2,9 +2,11 @@
     <nav class="main-tabs">
         <a href="#" class="tab">Главная</a>
         <a href="#" class="tab">Заявки</a>
+    @if(Auth::user())
         <a href="#" class="tab">Чат</a>
         <a href="#" class="tab">Онлайн подбор</a>
         <a href="#" class="tab">Для администраторов</a>
+    @endif
     </nav>
 
     @if(Auth::user())

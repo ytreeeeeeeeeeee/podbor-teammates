@@ -1,23 +1,20 @@
 @extends('layout')
 
-@section('title', 'Никнейм')
+@section('title', 'Заявка №')
 
 @section('page-content')
-    <h2 class="title">Никнейм</h2>
-    <div class="user-profile">
-        <div class="user-info">
+    <h2 class="title">Заголовок заявки</h2>
+    <div class="request-profile">
+        <div class="request-info">
             <div class="user-graph">
                 <div class="user-imgs">
                     <img class="user-avatar" src="/resources/images/qrcode%20(4).png" alt="avatar" />
                     <img class="user-flag" src="https://countryflagsapi.com/png/ru" alt="Russian Federation flag" />
                 </div>
-                <div class="user-categories">
-                    <p class="user-role">Role</p>
-                    <p class="user-status">Status</p>
-                </div>
+                <a href="#" class="request-game">Game</a>
             </div>
-            <div class="user-text">
-                <p class="user-description">dsgcvsghdcv ghsdv sdhgv chsjgdv sjhgd vcsjhgd vcshgkjd cvksjdh csdkghfc ksuyrf cgskhd vcsgkhd sjdhkvc skdcv shdcv sjdhgcv sjhdc sjdhgc sdjhgc sdvhgc</p>
+            <div class="request-text">
+                <p class="request-description">dsgcvsghdcv ghsdv sdhgv chsjgdv sjhgd vcsjhgd vcshgkjd cvksjdh csdkghfc ksuyrf cgskhd vcsgkhd sjdhkvc skdcv shdcv sjdhgcv sjhdc sjdhgc sdjhgc sdvhgc</p>
                 <div class="user-steam">
                     <img src="/resources/images/icons8-steam.svg" alt="steam icon"/>
                     <a class="user-steam--link" href="https://steamcommunity.com/profiles/76561199049415797/">Ссылка на профиль стим</a>
@@ -30,9 +27,7 @@
         </div>
         <div class="buttons">
             <a class="button" href="#">Написать сообщение</a>
-            <a class="button" href="#">Редактировать</a>
             <a class="button" href="#">Удалить</a>
         </div>
     </div>
-
 @endsection

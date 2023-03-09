@@ -17,4 +17,16 @@ class PageController extends Controller
     public function profile($id) {
         return view('profile');
     }
+
+    public function request($id) {
+        return view('request');
+    }
+
+    public function reg_auth() {
+        return view('reg-auth');
+    }
+
+    public function games() {
+        return view('games');
+    }
 }

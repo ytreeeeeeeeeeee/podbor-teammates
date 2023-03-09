@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Главная')
+@section('title', 'Мои заявки')
 
 @section('page-content')
     <h2 class="title">Мои заявки</h2>

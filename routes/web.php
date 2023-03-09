@@ -17,3 +17,6 @@ use App\Http\Controllers\PageController;
 Route::get('/', [PageController::class, 'index'])->name('main-page');
 Route::get('/my-requests', [PageController::class, 'my_requests'])->name('my-requests');
 Route::get('/profile/{id}', [PageController::class, 'profile'])->name('profile');
+Route::get('/request/{id}', [PageController::class, 'request'])->name('request');
+Route::get('/reg-auth', [PageController::class, 'reg_auth'])->name('reg-auth');
+Route::get('/games', [PageController::class, 'games'])->name('games');
