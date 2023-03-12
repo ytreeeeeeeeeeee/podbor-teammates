@@ -10,6 +10,10 @@ body {
     background-attachment: fixed;
 }
 
+.img-100 {
+    flex-basis: 100% !important;
+}
+
 /*HEADER*/
 
 .header {
@@ -104,7 +108,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-basis: 700px;
+    flex-basis: 40%;
 }
 
 .user-imgs {
@@ -139,7 +143,7 @@ main {
 }
 
 .request-game {
-    text-decoration: none;
+    text-align: center;
     color: black;
 }
 

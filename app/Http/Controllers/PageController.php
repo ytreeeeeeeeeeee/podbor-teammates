@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Game;
 use Illuminate\Http\Request;
 use App\Models\Request as Req;
+use App\Models\User;
 
 class PageController extends Controller
 {
@@ -18,11 +19,15 @@ class PageController extends Controller
     }
 
     public function profile($id) {
-        return view('profile');
+        $profile = User::findOrFail($id);
+        return view('profile', compact('profile'));
     }
 
     public function request($id) {
-        return view('request');
+        $req = Req::findOrFail($id);
+        $author = $req->author;
+        $game = $req->game;
+        return view('request', compact('req', 'author', 'game'));
     }
 
     public function reg_auth() {

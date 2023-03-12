@@ -5,7 +5,7 @@ const reqsList = document.querySelector('.card-request--list');
 $(window).scroll(setTimeout(function() {
     console.log(max_scroll);
     console.log(current_value);
-    if(max_scroll && $(window).scrollTop() + $(window).height() >= $(document).height() - 2000) {
+    if(max_scroll && $(window).scrollTop() + $(window).height() >= $(document).height() - 200) {
         $.ajax({
             url: '/req-scroll',
             method: 'GET',
