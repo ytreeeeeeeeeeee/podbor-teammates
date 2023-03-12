@@ -67,8 +67,10 @@ main {
     background-color: #e68a01;
     border-radius: 30px;
     padding: 20px;
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 250px;
+    text-decoration: none;
+    color: black;
 }
 
 .card-avatar {
@@ -193,6 +195,12 @@ main {
     border-radius: 20px;
     padding: 20px;
     align-items: center;
+    gap: 20px;
+}
+
+.game-img {
+    width: 35%;
+    height: auto;
 }
 
 /*FOOTER*/

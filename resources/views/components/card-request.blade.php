@@ -1,10 +1,10 @@
-<div class="card-request">
+<a href="#" class="card-request">
     <div class="card-text">
-        <h3 class="subtitle">Заголовокs jhsdjh dsjkhf d</h3>
-        <p class="card-description">sjyedfgyyhuys dyjfgasdjhgfsk h jasdgsfkya  sdugyfsad hgfga sdgv das gf yugsj hkdab vhgafsd ykgsdkc ftsya dfgkh agsdvcgt hvasdg hkfvaft vasdhcgk vasdh</p>
+        <h3 class="subtitle">{{$req->title}}</h3>
+        <p class="card-description">{{$req->description}}</p>
     </div>
     <div class="card-author">
-        <img class="card-avatar" src="/resources/images/imgonline-com-ua-Resize-8gfkFifhojF.jpg" alt="hjsdfhjs">
-        <p class="nickname">Nickname</p>
+        <img class="card-avatar" src="/{{$req->author->avatar}}" alt="avatar">
+        <p class="nickname">{{$req->author->name}}</p>
     </div>
-</div>
+</a>

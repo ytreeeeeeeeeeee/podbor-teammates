@@ -1,4 +1,4 @@
-$('.form').find('input, textarea').on('keyup blur focus', function (e) {
+$('.form').find('input').on('keyup blur focus', function (e) {
 
   var $this = $(this),
       label = $this.prev('label');
@@ -40,4 +40,22 @@ $('.tab a').on('click', function (e) {
 
   $(target).fadeIn(600);
 
+});
+
+function active_tab(hash) {
+    element = ".tab-link[href='" + hash + "']"
+    $(element).parent().addClass('active');
+    $(element).parent().siblings().removeClass('active');
+
+    target = $(element).attr('href');
+
+    $('.tab-content > div').not(target).hide();
+
+    $(target).fadeIn(600);
+}
+
+active_tab(window.location.hash)
+
+window.addEventListener('hashchange', function () {
+    active_tab(window.location.hash);
 });

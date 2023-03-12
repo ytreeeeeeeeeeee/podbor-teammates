@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\AjaxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,6 @@ Route::get('/profile/{id}', [PageController::class, 'profile'])->name('profile')
 Route::get('/request/{id}', [PageController::class, 'request'])->name('request');
 Route::get('/reg-auth', [PageController::class, 'reg_auth'])->name('reg-auth');
 Route::get('/games', [PageController::class, 'games'])->name('games');
+Route::get('all-requests', [PageController::class, 'all_requests'])->name('all-requests');
+
+Route::get('/req-scroll', [AjaxController::class, 'endlessScrolling'])->name('scroll');

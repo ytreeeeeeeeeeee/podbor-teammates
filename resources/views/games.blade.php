@@ -6,12 +6,12 @@
     <h2 class="title">Поиск по играм</h2>
     <form action="/" method="post">
         <div class="field-wrap">
-            <input type="text" autocomplete="off" placeholder="Search"/>
+            <input type="text" autocomplete="off" placeholder="Поиск"/>
         </div>
     </form>
     <div class="games-list">
-        <x-game-card></x-game-card>
-        <x-game-card></x-game-card>
-        <x-game-card></x-game-card>
+        @foreach($games as $game)
+            <x-game-card :game="$game"></x-game-card>
+        @endforeach
     </div>
 @endsection

@@ -3,6 +3,7 @@
 <head>
     @section('head')
         <meta charset="UTF-8">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>@yield('title')</title>
         <link href="/resources/css/app.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,7 +19,7 @@
         @yield('page-content')
     </main>
     <x-footer></x-footer>
-<script type="text/javascript" src="/resources/js/app.js"></script>
-<script type="text/javascript" src="/resources/js/signup.js"></script>
+    <script type="text/javascript" src="/resources/js/app.js"></script>
+    @yield('scripts')
 </body>
 </html>

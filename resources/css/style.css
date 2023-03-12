@@ -29,6 +29,10 @@ body {
   box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.3);
 }
 
+.reg-title {
+    margin: 1em 0 !important;
+}
+
 .tab-group {
   list-style: none;
   padding: 0;
@@ -97,7 +101,7 @@ label.highlight {
   color: #ffffff;
 }
 
-input, textarea {
+input, textarea, select {
   font-size: 22px;
   display: block;
   width: 100%;
@@ -167,4 +171,12 @@ textarea {
 .forgot {
   margin-top: -20px;
   text-align: right;
+}
+
+.reg-description {
+    height: 150px;
+}
+
+.reg-country option {
+    background-color: black;
 }

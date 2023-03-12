@@ -2,8 +2,6 @@ function truncateText(selector, maxLength) {
     let elements = document.querySelectorAll(selector);
 
     elements.forEach((element, index) => {
-        console.log(element.clientWidth);
-        console.log(element.clientHeight);
         let truncated = element.innerText;
         if (truncated.length > maxLength) {
             truncated = truncated.substring(0, maxLength) + "...";
