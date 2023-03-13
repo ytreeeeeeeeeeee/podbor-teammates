@@ -14,7 +14,7 @@ class AjaxController extends Controller
             return null;
         }
 
-        $result = Req::whereBetween('id', [$start_value, $start_value + 20])->get();
+        $result = Req::orderBy('id', 'desc')->skip($start_value-1)->take(20)->get();
         $html = '';
         foreach ($result as $req) {
             $html .= view('components.card-request', ['req' => $req])->render();

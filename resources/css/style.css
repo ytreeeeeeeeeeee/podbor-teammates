@@ -180,3 +180,40 @@ textarea {
 .reg-country option {
     background-color: black;
 }
+
+.form-item--invalid {
+    border-color: #d9534f;
+}
+
+.error-table {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border: 1px solid #d9534f;
+    border-radius: 4px;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f2dede;
+    color: #a94442;
+    z-index: 500;
+}
+
+.error-table-header {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.error-row {
+    display: flex;
+    align-items: center;
+}
+
+.error-cell {
+    margin-right: 10px;
+}
+
+.error-cell i {
+    color: #a94442;
+}

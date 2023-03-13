@@ -6,7 +6,7 @@
     <h2 class="title">{{$req->title}}</h2>
     <div class="request-profile">
         <div class="request-info">
-            <div class="user-graph img-100">
+            <div class="user-graph">
                 <div class="user-imgs">
                     <img class="user-avatar" src="/{{$author->avatar}}" alt="avatar" />
                     <img class="user-flag" src="https://www.countryflagicons.com/FLAT/64/RU.png" alt="flag" />

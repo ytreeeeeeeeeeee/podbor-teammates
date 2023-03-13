@@ -19,6 +19,7 @@ $(window).scroll(setTimeout(function() {
                     reqsList.innerHTML += text;
                     current_value += 20;
                 }
+                truncateText('.card-description', 90)
             },
             error: function (error) {
                 console.error(error);

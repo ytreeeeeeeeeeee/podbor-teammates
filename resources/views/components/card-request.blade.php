@@ -1,4 +1,4 @@
-<a href="#" class="card-request">
+<a href="{{route('request', ['id' => $req->id])}}" class="card-request">
     <div class="card-text">
         <h3 class="subtitle">{{$req->title}}</h3>
         <p class="card-description">{{$req->description}}</p>

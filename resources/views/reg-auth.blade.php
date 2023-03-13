@@ -3,6 +3,7 @@
 @section('title', 'Регистрация/авторизация')
 
 @section('page-content')
+    <p>{{$errors}}</p>
     <div class="form">
         <ul class="tab-group">
             <li class="tab active"><a class="tab-link" href="#signup">Регистрация</a></li>
@@ -17,22 +18,22 @@
                         <label>
                             Никнейм<span class="req">*</span>
                         </label>
-                        <input name="name" type="text" required autocomplete="off" />
+                        <input name="name" @error('name')data-error="{{json_encode($errors['name'])}}" @enderror type="text" required autocomplete="off" />
                     </div>
                     <div class="field-wrap">
                         <label>
                             Email<span class="req">*</span>
                         </label>
-                        <input name="email" type="email" required autocomplete="off"/>
+                        <input name="email" @error('email')data-error="{{json_encode($errors->first('email'))}}" @enderror type="email" required autocomplete="off"/>
                     </div>
                     <div class="field-wrap">
                         <label>
                             Пароль<span class="req">*</span>
                         </label>
-                        <input name="password" type="password" required autocomplete="off"/>
+                        <input name="password" @error('password')data-error="{{json_encode($errors['password'])}}" @enderror type="password" required autocomplete="off"/>
                     </div>
                     <div class="field-wrap">
-                        <textarea name="description" class="reg-description" placeholder="Описание"></textarea>
+                        <textarea name="description" @error('description')data-error="{{json_encode($errors['description'])}}" @enderror class="reg-description" required placeholder="Описание" autocomplete="off"></textarea>
                     </div>
                     <div class="field-wrap">
                         <select name="country" class="reg-country">
@@ -63,8 +64,26 @@
             </div>
         </div>
     </div>
+
+    <template>
+        <div id="template-error" class="error-table">
+            <div class="error-table-header">
+                Error
+            </div>
+            <div class="error-table-body">
+                <div class="error-row">
+                    <div class="error-cell">
+                        <i class="fa fa-exclamation-circle"></i>
+                    </div>
+                    <div id="error-text" class="error-cell">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
 @endsection
 
 @section('scripts')
     <script type="text/javascript" src="/resources/js/signup.js"></script>
+    <script type="text/javascript" src="/resources/js/handleErrors.js"></script>
 @endsection

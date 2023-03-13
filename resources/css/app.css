@@ -10,10 +10,6 @@ body {
     background-attachment: fixed;
 }
 
-.img-100 {
-    flex-basis: 100% !important;
-}
-
 /*HEADER*/
 
 .header {
@@ -154,6 +150,7 @@ main {
     line-height: 1.5;
     flex-direction: column;
     gap: 30px;
+    flex-basis: 60%;
 }
 
 .user-steam,

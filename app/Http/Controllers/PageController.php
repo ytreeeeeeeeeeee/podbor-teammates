@@ -40,7 +40,7 @@ class PageController extends Controller
     }
 
     public function all_requests() {
-        $reqs = Req::take(5)->get();
+        $reqs =  Req::orderBy('id', 'desc')->take(5)->get();
         return view('all-requests', compact('reqs'));
     }
 }
