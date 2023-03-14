@@ -3,7 +3,6 @@
 @section('title', 'Регистрация/авторизация')
 
 @section('page-content')
-    <p>{{$errors}}</p>
     <div class="form">
         <ul class="tab-group">
             <li class="tab active"><a class="tab-link" href="#signup">Регистрация</a></li>
@@ -18,22 +17,22 @@
                         <label>
                             Никнейм<span class="req">*</span>
                         </label>
-                        <input name="name" @error('name')data-error="{{json_encode($errors['name'])}}" @enderror type="text" required autocomplete="off" />
+                        <input name="name" @error('name')data-error="{{json_encode($errors->first('name'))}}" @enderror type="text" required autocomplete="off" value="{{old('name')}}" />
                     </div>
                     <div class="field-wrap">
                         <label>
                             Email<span class="req">*</span>
                         </label>
-                        <input name="email" @error('email')data-error="{{json_encode($errors->first('email'))}}" @enderror type="email" required autocomplete="off"/>
+                        <input name="email" @error('email') @if(request()->query('tab') == 'signup') data-error="{{json_encode($errors->first('email'))}}" @endif @enderror type="email" required autocomplete="off" value="{{old('email')}}" />
                     </div>
                     <div class="field-wrap">
                         <label>
                             Пароль<span class="req">*</span>
                         </label>
-                        <input name="password" @error('password')data-error="{{json_encode($errors['password'])}}" @enderror type="password" required autocomplete="off"/>
+                        <input name="password" @error('password') @if(request()->query('tab') == 'signup') data-error="{{json_encode($errors->first('password'))}}" @endif @enderror type="password" required autocomplete="off" value="{{old('password')}}"/>
                     </div>
                     <div class="field-wrap">
-                        <textarea name="description" @error('description')data-error="{{json_encode($errors['description'])}}" @enderror class="reg-description" required placeholder="Описание" autocomplete="off"></textarea>
+                        <textarea name="description" @error('description')data-error="{{json_encode($errors->first('description'))}}" @enderror class="reg-description" required placeholder="Описание" autocomplete="off">{{old('description')}}</textarea>
                     </div>
                     <div class="field-wrap">
                         <select name="country" class="reg-country">
@@ -46,18 +45,19 @@
             </div>
             <div id="login">
                 <h1 class="title reg-title">Добро пожаловать!</h1>
-                <form action="/" method="post">
+                <form action="{{route('login')}}" method="post" autocomplete="off">
+                    @csrf
                     <div class="field-wrap">
                         <label>
                             Email<span class="req">*</span>
                         </label>
-                        <input type="email" required autocomplete="off"/>
+                        <input name="email" @error('email') @if(request()->query('tab') == 'login') data-error="{{json_encode($errors->first('email'))}}"@endif @enderror type="email" required autocomplete="off" value="{{old('email')}}"/>
                     </div>
                     <div class="field-wrap">
                         <label>
                             Пароль<span class="req">*</span>
                         </label>
-                        <input type="password" required autocomplete="off"/>
+                        <input name="password" @error('password') @if(request()->query('tab') == 'login') data-error="{{json_encode($errors->first('password'))}}" @endif @enderror type="password" required autocomplete="off" />
                     </div>
                     <button class="button-form button-block">Войти</button>
                 </form>

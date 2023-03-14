@@ -24,5 +24,7 @@ Route::get('/reg-auth', [PageController::class, 'reg_auth'])->name('reg-auth');
 Route::get('/games', [PageController::class, 'games'])->name('games');
 Route::get('/all-requests', [PageController::class, 'all_requests'])->name('all-requests');
 Route::get('/req-scroll', [AjaxController::class, 'endlessScrolling'])->name('scroll');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::post('/signup', [UserController::class, 'signup'])->name('signup');
+Route::post('/login', [UserController::class, 'login'])->name('login');
