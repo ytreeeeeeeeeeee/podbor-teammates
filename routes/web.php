@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RequestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AjaxController;
@@ -25,6 +26,8 @@ Route::get('/games', [PageController::class, 'games'])->name('games');
 Route::get('/all-requests', [PageController::class, 'all_requests'])->name('all-requests');
 Route::get('/req-scroll', [AjaxController::class, 'endlessScrolling'])->name('scroll');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+Route::get('/add-request', [PageController::class, 'add_request'])->name('add-req')->middleware('customAuth');
 
 Route::post('/signup', [UserController::class, 'signup'])->name('signup');
 Route::post('/login', [UserController::class, 'login'])->name('login');
+Route::post('/addreq', [RequestController::class, 'add_req'])->name('add-req-post')->middleware('customAuth');

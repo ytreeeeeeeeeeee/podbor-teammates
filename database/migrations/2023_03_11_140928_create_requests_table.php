@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->foreignId('game_id')->constrained('games');
             $table->foreignId('author_id')->constrained('users');
-            $table->foreignId('status_id')->constrained('statuses');
+            $table->foreignId('status_id')->default(1)->constrained('statuses');
             $table->timestamp('created_at');
         });
     }

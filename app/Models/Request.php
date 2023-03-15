@@ -9,6 +9,8 @@ class Request extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function author() {
         return $this->belongsTo(User::class);
     }

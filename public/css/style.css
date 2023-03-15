@@ -33,6 +33,11 @@ body {
     margin: 1em 0 !important;
 }
 
+.add-req-title {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
 .tab-group {
     list-style: none;
     padding: 0;
@@ -177,7 +182,8 @@ textarea {
     height: 150px;
 }
 
-.reg-country option {
+.reg-country option,
+.add-req-game option {
     background-color: black;
 }
 

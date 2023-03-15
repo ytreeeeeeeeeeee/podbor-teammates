@@ -8,8 +8,8 @@
         <div class="request-info">
             <div class="user-graph">
                 <div class="user-imgs">
-                    <img class="user-avatar" src="/{{$author->avatar}}" alt="avatar" />
-                    <img class="user-flag" src="https://www.countryflagicons.com/FLAT/64/RU.png" alt="flag" />
+                    <img class="user-avatar" src="{{$author->avatar}}" alt="avatar"/>
+                    <img class="user-flag" src="https://www.countryflagicons.com/FLAT/64/RU.png" alt="flag"/>
                 </div>
                 <p class="request-game">{{$game->title}}</p>
             </div>

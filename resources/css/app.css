@@ -18,6 +18,7 @@ body {
     padding: 20px 20%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .logged-menu,
@@ -27,10 +28,28 @@ body {
     gap: 40px;
 }
 
+.logged-menu {
+    gap: 30px;
+}
+
+.logged-menu--item {
+    width: 25%;
+}
+
+.logged-menu--item img{
+    max-width: 40px;
+    width: 100%;
+    height: auto;
+}
+
 .logout-menu__item,
 .tab {
     text-decoration: none;
     color: white;
+}
+
+.profile {
+    border-radius: 50%;
 }
 
 /*MAIN*/
@@ -248,7 +267,7 @@ main {
 @media (max-width:720px){
     .footer{
         text-align:left;
-        padding:5%;
+        padding:5% !important;
     }
     .footer .row ul li{
         display:block;

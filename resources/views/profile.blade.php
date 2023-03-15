@@ -8,8 +8,8 @@
         <div class="user-info">
             <div class="user-graph">
                 <div class="user-imgs">
-                    <img class="user-avatar" src="/{{$profile->avatar}}" alt="avatar" />
-                    <img class="user-flag" src="https://www.countryflagicons.com/FLAT/64/RU.png" alt="flag" />
+                    <img class="user-avatar" src="{{$profile->avatar}}" alt="avatar"/>
+                    <img class="user-flag" src="https://www.countryflagicons.com/FLAT/64/RU.png" alt="flag"/>
                 </div>
                 <div class="user-categories">
                     <p class="user-role">{{$profile->role->title}}</p>
@@ -34,7 +34,9 @@
         </div>
         <div class="buttons">
             <a class="button" href="#">Написать сообщение</a>
-            <a class="button" href="#">Редактировать</a>
+            @if(Auth::user()->id == $profile->id)
+                <a class="button" href="#">Редактировать</a>
+            @endif
             <a class="button" href="#">Удалить</a>
         </div>
     </div>

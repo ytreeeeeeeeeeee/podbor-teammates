@@ -43,4 +43,9 @@ class PageController extends Controller
         $reqs =  Req::orderBy('id', 'desc')->take(5)->get();
         return view('all-requests', compact('reqs'));
     }
+
+    public function add_request() {
+        $games = Game::all();
+        return view('add-request', compact('games'));
+    }
 }

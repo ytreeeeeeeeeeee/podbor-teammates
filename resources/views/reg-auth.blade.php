@@ -17,22 +17,31 @@
                         <label>
                             Никнейм<span class="req">*</span>
                         </label>
-                        <input name="name" @error('name')data-error="{{json_encode($errors->first('name'))}}" @enderror type="text" required autocomplete="off" value="{{old('name')}}" />
+                        <input name="name" @error('name')data-error="{{json_encode($errors->first('name'))}}"
+                               @enderror type="text" required autocomplete="off" value="{{old('name')}}"/>
                     </div>
                     <div class="field-wrap">
                         <label>
                             Email<span class="req">*</span>
                         </label>
-                        <input name="email" @error('email') @if(request()->query('tab') == 'signup') data-error="{{json_encode($errors->first('email'))}}" @endif @enderror type="email" required autocomplete="off" value="{{old('email')}}" />
+                        <input name="email"
+                               @error('email') @if(request()->query('tab') == 'signup') data-error="{{json_encode($errors->first('email'))}}"
+                               @endif @enderror type="email" required autocomplete="off" value="{{old('email')}}"/>
                     </div>
                     <div class="field-wrap">
                         <label>
                             Пароль<span class="req">*</span>
                         </label>
-                        <input name="password" @error('password') @if(request()->query('tab') == 'signup') data-error="{{json_encode($errors->first('password'))}}" @endif @enderror type="password" required autocomplete="off" value="{{old('password')}}"/>
+                        <input name="password"
+                               @error('password') @if(request()->query('tab') == 'signup') data-error="{{json_encode($errors->first('password'))}}"
+                               @endif @enderror type="password" required autocomplete="off"
+                               value="{{old('password')}}"/>
                     </div>
                     <div class="field-wrap">
-                        <textarea name="description" @error('description')data-error="{{json_encode($errors->first('description'))}}" @enderror class="reg-description" required placeholder="Описание" autocomplete="off">{{old('description')}}</textarea>
+                        <textarea name="description"
+                                  @error('description')data-error="{{json_encode($errors->first('description'))}}"
+                                  @enderror class="reg-description" required placeholder="Описание"
+                                  autocomplete="off">{{old('description')}}</textarea>
                     </div>
                     <div class="field-wrap">
                         <select name="country" class="reg-country">
@@ -51,13 +60,15 @@
                         <label>
                             Email<span class="req">*</span>
                         </label>
-                        <input name="email" @error('email') @if(request()->query('tab') == 'login') data-error="{{json_encode($errors->first('email'))}}"@endif @enderror type="email" required autocomplete="off" value="{{old('email')}}"/>
+                        <input name="email"
+                               @error('auth_error')data-error="{{json_encode($errors->first('auth_error'))}}" @enderror type="email" required autocomplete="off" value="{{old('email')}}"/>
                     </div>
                     <div class="field-wrap">
                         <label>
                             Пароль<span class="req">*</span>
                         </label>
-                        <input name="password" @error('password') @if(request()->query('tab') == 'login') data-error="{{json_encode($errors->first('password'))}}" @endif @enderror type="password" required autocomplete="off" />
+                        <input name="password"
+                               @error('auth_error') data-error="{{json_encode($errors->first('auth_error'))}}" @enderror type="password" required autocomplete="off"/>
                     </div>
                     <button class="button-form button-block">Войти</button>
                 </form>
@@ -84,6 +95,6 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript" src="/js/signup.js"></script>
-    <script type="text/javascript" src="/js/handleErrors.js"></script>
+    <script type="text/javascript" src="/resources/js/signup.js"></script>
+    <script type="text/javascript" src="/resources/js/handleErrors.js"></script>
 @endsection
