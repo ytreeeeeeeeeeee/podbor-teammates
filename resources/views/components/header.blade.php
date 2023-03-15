@@ -10,10 +10,10 @@
 
     @if(Auth::user())
         <nav class="logged-menu">
-            <a href="{{route('profile', ['id' => 1])}}" class="logout-menu__item"><img src="#" id="profile" class="profile" alt="Профиль"></a>
-            <a href="#" class="logout-menu__item"><img class="chat" src="https://img.icons8.com/sf-black-filled/64/ef6817/chat-message.png" alt="Чат"></a>
-            <a href="{{route('my-requests')}}" class="logout-menu__item"><img class="requests" src="https://img.icons8.com/pastel-glyph/64/ef6817/paperwork--v1.png" alt="Ваши заявки"></a>
-            <a href="{{route('logout')}}" class="logout-menu__item"><img class="logout" src="https://img.icons8.com/ios-glyphs/30/ef6817/exit.png" alt="Выход"></a>
+            <a href="{{route('profile', ['id' => 1])}}" class="logged-menu--item"><img src="{{}}" id="profile" class="profile" alt="Профиль" /></a>
+            <a href="#" class="logged-menu--item"><img class="chat" src="https://img.icons8.com/sf-black-filled/250/e68a01/chat-message.png" alt="Chat"/></a>
+            <a href="{{route('my-requests')}}" class="logged-menu--item"><img class="requests" src="https://img.icons8.com/material/250/e68a01/application-form.png" alt="My-requests"/></a>
+            <a href="{{route('logout')}}" class="logged-menu--item"><img class="logout" src="https://img.icons8.com/ios-glyphs/250/e68a01/exit.png" alt="Выход" /></a>
         </nav>
     @else
         <nav class="logout-menu">

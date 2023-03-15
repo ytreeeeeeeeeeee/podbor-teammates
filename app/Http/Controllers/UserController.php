@@ -31,7 +31,7 @@ class UserController extends Controller
         $user->email = $userData['email'];
         $user->password = bcrypt($userData['password']);
         $user->description = $userData['description'];
-        $user->avatar = 'resources/images/base_avatar.jpeg';
+        $user->avatar = 'images/base_avatar.jpeg';
         $user->country = $userData['country'];
         $user->role_id = 1;
         $user->status_id = 1;

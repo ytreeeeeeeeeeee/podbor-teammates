@@ -7,10 +7,6 @@
     <div class="card-request--list">
         @foreach($reqs as $req)
             @include('components.card-request', ['req' => $req])
-{{--            @livewire('card-request', ['req' => $req])--}}
-{{--            <livewire:card-request :req="$req" />--}}
-{{--            <x-card-request :req="$req"></x-card-request>--}}
-{{--            @component("components.card-request", [":req" => $req])<x-card-request></x-card-request>@endcomponent--}}
         @endforeach
 
     </div>
@@ -18,5 +14,5 @@
 
 @section('scripts')
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script type="text/javascript" src="/resources/js/endlessScroll.js"></script>
+    <script type="text/javascript" src="/js/endlessScroll.js"></script>
 @endsection
