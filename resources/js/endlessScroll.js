@@ -1,16 +1,16 @@
 let current_value = 9;
 let max_scroll = true;
-const reqsList = document.querySelector('.card-request--list');
+let reqsList = document.querySelector('.card-request--list');
 
-$(window).scroll(setTimeout(function() {
+$(window).scroll(_.debounce(function() {
     if(max_scroll && $(window).scrollTop() + $(window).height() >= $(document).height() - 200) {
         let pageInfo = reqsList.dataset.page;
+        let game = reqsList.dataset.game;
         $.ajax({
             url: '/req-scroll',
             method: 'GET',
-            data: {start: current_value, page: pageInfo},
+            data: {start: current_value, page: pageInfo, game_id: game},
             success: function (text) {
-                console.log(text);
                 if (!text) {
                     max_scroll = false;
                 }
@@ -25,6 +25,6 @@ $(window).scroll(setTimeout(function() {
             }
         });
     }
-}, 1000));
+}, 500));
 
 

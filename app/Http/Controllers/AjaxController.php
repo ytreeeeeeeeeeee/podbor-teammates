@@ -11,6 +11,7 @@ class AjaxController extends Controller
     public function endlessScrolling(Request $request) {
         $start_value = $request->input('start');
         $page = $request->input('page');
+        $game = $request->input('game_id');
 
         if (Req::count() < $start_value){
             return null;
@@ -24,7 +25,7 @@ class AjaxController extends Controller
                 $result = Req::orderBy('id', 'desc')->where('id', Auth::user()->id)->skip($start_value-1)->take(20)->get();
                 break;
             case 'game-reqs':
-                //$result = Req::orderBy('id', 'desc')->where('game_id', $id)->take(8)->get();
+                $result = Req::orderBy('id', 'desc')->where('game_id', $game)->skip($start_value-1)->take(20)->get();
                 break;
             default:
                 break;

@@ -12,8 +12,9 @@
     </div>
 @endsection
 
-{{--@section('scripts')--}}
-{{--    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>--}}
-{{--    <script type="text/javascript" src="/js/endlessScroll.js"></script>--}}
-{{--@endsection--}}
+@section('scripts')
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script type="text/javascript" src="/resources/js/endlessScroll.js"></script>
+@endsection
 

@@ -16,7 +16,7 @@ class PageController extends Controller
     }
 
     public function my_requests() {
-        $reqs =  Req::orderBy('id', 'desc')->where('id', Auth::user()->id)->take(8)->get();
+        $reqs =  Req::orderBy('id', 'desc')->where('author_id', Auth::id())->take(8)->get();
         return view('my-requests', compact('reqs'));
     }
 

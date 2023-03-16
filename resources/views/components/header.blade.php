@@ -11,7 +11,10 @@
 
     @if(Auth::user())
         <nav class="logged-menu">
-            <a href="{{route('profile', ['id' => Auth::user()->id])}}" class="logged-menu--item"><img src="{{Auth::user()->avatar}}" id="profile" class="profile" alt="Профиль" /></a>
+            <a href="{{route('profile', ['id' => Auth::user()->id])}}" class="logged-menu--item profile-container">
+                <img src="{{Auth::user()->avatar}}" id="profile" class="profile" alt="Профиль" />
+                <div class="profile-info">Некая разметка</div>
+            </a>
             <a href="#" class="logged-menu--item"><img class="chat" src="https://img.icons8.com/sf-black-filled/250/e68a01/chat-message.png" alt="Chat"/></a>
             <a href="{{route('my-requests')}}" class="logged-menu--item"><img class="requests" src="https://img.icons8.com/material/250/e68a01/application-form.png" alt="My-requests"/></a>
             <a href="{{route('logout')}}" class="logged-menu--item"><img class="logout" src="https://img.icons8.com/ios-glyphs/250/e68a01/exit.png" alt="Выход" /></a>

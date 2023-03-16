@@ -48,8 +48,28 @@ body {
     color: white;
 }
 
+.profile-container {
+    position: relative;
+}
+
 .profile {
     border-radius: 50%;
+}
+
+.profile-info {
+    display: none;
+    position: absolute;
+    width: 200px;
+    top: 100%;
+    background-color: #000;
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: white;
+}
+
+.profile:hover + .profile-info,
+.profile-info:hover {
+    display: block;
 }
 
 /*MAIN*/
