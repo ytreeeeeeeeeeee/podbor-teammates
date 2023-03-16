@@ -1,4 +1,4 @@
-let current_value = 6;
+let current_value = 9;
 let max_scroll = true;
 const reqsList = document.querySelector('.card-request--list');
 

@@ -18,7 +18,7 @@ use \App\Http\Controllers\UserController;
 */
 
 Route::get('/', [PageController::class, 'index'])->name('main-page');
-Route::get('/my-requests', [PageController::class, 'my_requests'])->name('my-requests');
+Route::get('/my-requests', [PageController::class, 'my_requests'])->name('my-requests')->middleware('customAuth');
 Route::get('/profile/{id}', [PageController::class, 'profile'])->name('profile');
 Route::get('/request/{id}', [PageController::class, 'request'])->name('request');
 Route::get('/reg-auth', [PageController::class, 'reg_auth'])->name('reg-auth');
@@ -27,6 +27,7 @@ Route::get('/all-requests', [PageController::class, 'all_requests'])->name('all-
 Route::get('/req-scroll', [AjaxController::class, 'endlessScrolling'])->name('scroll');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/add-request', [PageController::class, 'add_request'])->name('add-req')->middleware('customAuth');
+Route::get('/game-requests/{id}', [PageController::class, 'game_reqs'])->name('game-reqs');
 
 Route::post('/signup', [UserController::class, 'signup'])->name('signup');
 Route::post('/login', [UserController::class, 'login'])->name('login');

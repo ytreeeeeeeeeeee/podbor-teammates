@@ -7,11 +7,11 @@
     <div class="request-profile">
         <div class="request-info">
             <div class="user-graph">
-                <div class="user-imgs">
+                <a class="user-imgs" href="{{route('profile', ['id' => $author->id])}}">
                     <img class="user-avatar" src="{{$author->avatar}}" alt="avatar"/>
                     <img class="user-flag" src="https://www.countryflagicons.com/FLAT/64/RU.png" alt="flag"/>
-                </div>
-                <p class="request-game">{{$game->title}}</p>
+                </a>
+                <a href="{{route('game-reqs', ['id' => $game->id])}}" class="request-game">{{$game->title}}</a>
             </div>
             <div class="request-text">
                 <p class="request-description">{{$req->description}}</p>
@@ -29,9 +29,14 @@
                 @endif
             </div>
         </div>
-        <div class="buttons">
-            <a class="button" href="#">Написать сообщение</a>
-            <a class="button" href="#">Удалить</a>
-        </div>
+        @if(Auth::user())
+            <div class="buttons">
+                @if(Auth::user()->id != $author->id)
+                    <a class="button" href="#">Написать сообщение</a>
+                @else
+                    <a class="button" href="#">Удалить</a>
+                @endif
+            </div>
+        @endif
     </div>
 @endsection

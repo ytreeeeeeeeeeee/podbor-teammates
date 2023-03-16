@@ -33,11 +33,12 @@
             </div>
         </div>
         <div class="buttons">
-            <a class="button" href="#">Написать сообщение</a>
-            @if(Auth::user()->id == $profile->id)
+            @if(Auth::user()->id != $profile->id)
+                <a class="button" href="#">Написать сообщение</a>
+            @else
                 <a class="button" href="#">Редактировать</a>
+                <a class="button" href="#">Удалить</a>
             @endif
-            <a class="button" href="#">Удалить</a>
         </div>
     </div>
 

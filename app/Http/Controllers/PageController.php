@@ -6,6 +6,7 @@ use App\Models\Game;
 use Illuminate\Http\Request;
 use App\Models\Request as Req;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -15,7 +16,8 @@ class PageController extends Controller
     }
 
     public function my_requests() {
-        return view('my-requests');
+        $reqs =  Req::orderBy('id', 'desc')->where('id', Auth::user()->id)->take(8)->get();
+        return view('my-requests', compact('reqs'));
     }
 
     public function profile($id) {
@@ -40,12 +42,18 @@ class PageController extends Controller
     }
 
     public function all_requests() {
-        $reqs =  Req::orderBy('id', 'desc')->take(5)->get();
+        $reqs =  Req::orderBy('id', 'desc')->take(8)->get();
         return view('all-requests', compact('reqs'));
     }
 
     public function add_request() {
         $games = Game::all();
         return view('add-request', compact('games'));
+    }
+
+    public function game_reqs($id) {
+        $reqs =  Req::orderBy('id', 'desc')->where('game_id', $id)->take(8)->get();
+        $game = Game::findorFail($id);
+        return view('game-requests', compact('reqs', 'game'));
     }
 }

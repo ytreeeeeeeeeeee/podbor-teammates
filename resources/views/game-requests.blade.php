@@ -3,8 +3,8 @@
 @section('title', 'Все заявки')
 
 @section('page-content')
-    <h2 class="title">Мои заявки</h2>
-    <div class="card-request--list" data-page="my-reqs">
+    <h2 class="title">Заявки по игре {{$game->title}}</h2>
+    <div class="card-request--list" data-page="game-reqs">
         @foreach($reqs as $req)
             @include('components.card-request', ['req' => $req])
         @endforeach
@@ -16,4 +16,3 @@
 {{--    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>--}}
 {{--    <script type="text/javascript" src="/js/endlessScroll.js"></script>--}}
 {{--@endsection--}}
-

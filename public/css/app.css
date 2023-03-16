@@ -18,6 +18,7 @@ body {
     padding: 20px 20%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .logged-menu,
@@ -28,10 +29,15 @@ body {
 }
 
 .logged-menu {
-    flex-basis: 25%;
+    gap: 30px;
+}
+
+.logged-menu--item {
+    width: 25%;
 }
 
 .logged-menu--item img{
+    max-width: 40px;
     width: 100%;
     height: auto;
 }
@@ -40,6 +46,10 @@ body {
 .tab {
     text-decoration: none;
     color: white;
+}
+
+.profile {
+    border-radius: 50%;
 }
 
 /*MAIN*/
@@ -148,6 +158,7 @@ main {
 }
 
 .request-game {
+    text-decoration: none;
     text-align: center;
     color: black;
 }

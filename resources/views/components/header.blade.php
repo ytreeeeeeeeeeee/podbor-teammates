@@ -2,10 +2,10 @@
     <nav class="main-tabs">
         <a href="{{route('main-page')}}" class="tab">Главная</a>
         <a href="{{route('all-requests')}}" class="tab">Заявки</a>
+        <a href="{{route('games')}}" class="tab">Игры</a>
     @if(Auth::user())
         <a href="{{route('add-req')}}" class="tab">Создать заявку</a>
         <a href="#" class="tab">Онлайн подбор</a>
-        <a href="#" class="tab">Для администраторов</a>
     @endif
     </nav>
 
