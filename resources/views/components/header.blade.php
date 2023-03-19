@@ -12,7 +12,7 @@
     @if(Auth::user())
         <nav class="logged-menu">
             <a href="{{route('profile', ['id' => Auth::user()->id])}}" class="logged-menu--item profile-container">
-                <img src="{{Auth::user()->avatar}}" id="profile" class="profile" alt="Профиль" />
+                <img src="{{asset(Auth::user()->avatar)}}" id="profile" class="profile" alt="Профиль" />
                 <div class="profile-info">Некая разметка</div>
             </a>
             <a href="#" class="logged-menu--item"><img class="chat" src="https://img.icons8.com/sf-black-filled/250/e68a01/chat-message.png" alt="Chat"/></a>

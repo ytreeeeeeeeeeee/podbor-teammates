@@ -4,7 +4,7 @@
         <p class="card-description">{{$req->description}}</p>
     </div>
     <div class="card-author">
-        <img class="card-avatar" src="{{$req->author->avatar}}" alt="avatar">
+        <img class="card-avatar" src="{{asset($req->author->avatar)}}" alt="avatar">
         <p class="nickname">{{$req->author->name}}</p>
     </div>
 </a>

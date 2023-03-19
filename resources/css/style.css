@@ -38,6 +38,10 @@ body {
     margin: 1em 0 !important;
 }
 
+.edit-title {
+    margin-top: 0 !important;
+}
+
 .add-req-title {
     margin-top: 0;
     margin-bottom: 1em;
@@ -192,6 +196,8 @@ textarea {
     background-color: black;
 }
 
+/*ERROR*/
+
 .form-item--invalid {
     border-color: #d9534f;
 }
@@ -210,6 +216,34 @@ textarea {
     z-index: 500;
 }
 
+.alert-table {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    max-width: 500px;
+    border: 1px solid #d9534f;
+    border-radius: 4px;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f2dede;
+    color: #a94442;
+    z-index: 500;
+    animation: fade-out 5s ease-in forwards;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+
 .error-table-header {
     font-weight: bold;
     text-align: center;
@@ -227,4 +261,8 @@ textarea {
 
 .error-cell i {
     color: #a94442;
+}
+
+.no-border {
+    border: none !important;
 }

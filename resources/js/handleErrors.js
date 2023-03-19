@@ -1,11 +1,11 @@
 const inputs = document.querySelectorAll('[data-error]');
 const errorTable = document.querySelector('template');
 
-const addError = (e, error) => {
+const addError = (e, error, el) => {
     const clone = errorTable.content.cloneNode(true);
     const errorText = clone.querySelector('#error-text');
     errorText.textContent = error;
-    e.target.parentElement.appendChild(clone);
+    e ? e.target.parentElement.appendChild(clone) : document.querySelector('main').prepend(clone);
 }
 
 const deleteErrorTable = (e) => {
@@ -15,6 +15,11 @@ const deleteErrorTable = (e) => {
 
 inputs.forEach((input) => {
     const error = JSON.parse(input.dataset.error);
+
+    if (input.classList.contains('alert')) {
+        addError(null, error, input);
+        return
+    }
 
     if (error) {
         input.classList.add('form-item--invalid');
