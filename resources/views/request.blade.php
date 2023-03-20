@@ -8,7 +8,7 @@
         <div class="request-info">
             <div class="user-graph">
                 <a class="user-imgs" href="{{route('profile', ['id' => $author->id])}}">
-                    <img class="user-avatar" src="{{$author->avatar}}" alt="avatar"/>
+                    <img class="user-avatar" src="{{asset($author->avatar)}}" alt="avatar"/>
                     <img class="user-flag" src="https://www.countryflagicons.com/FLAT/64/RU.png" alt="flag"/>
                 </a>
                 <a href="{{route('game-reqs', ['id' => $game->id])}}" class="request-game">{{$game->title}}</a>
@@ -31,10 +31,15 @@
         </div>
         @if(Auth::user())
             <div class="buttons">
-                @if(Auth::user()->id != $author->id)
-                    <a class="button" href="#">Написать сообщение</a>
+                @if(Auth::user()->isAdmin() && $req->status->id === 1)
+                    <a class="approve button" href="{{route('approveRequest', ['id' => $req->id])}}">Опубликовать</a>
+                    <a class="ban button" href="{{route('banRequest', ['id' => $req->id])}}">Заблокировать</a>
                 @else
-                    <a class="button" href="#">Удалить</a>
+                    @if(Auth::user()->id != $author->id)
+                        <a class="button" href="#">Написать сообщение</a>
+                    @elseif(Auth::user()->id == $author->id)
+                        <a class="button" href="#">Удалить</a>
+                    @endif
                 @endif
             </div>
         @endif

@@ -19,13 +19,13 @@ class AjaxController extends Controller
 
         switch ($page) {
             case 'all-reqs':
-                $result = Req::orderBy('id', 'desc')->skip($start_value-1)->take(20)->get();
+                $result = Req::orderBy('created_at', 'desc')->where('status_id', 2)->skip($start_value-1)->take(20)->get();
                 break;
             case 'my-reqs':
-                $result = Req::orderBy('id', 'desc')->where('id', Auth::user()->id)->skip($start_value-1)->take(20)->get();
+                $result = Req::orderBy('created_at', 'desc')->where('id', Auth::user()->id)->where('status_id', 2)->skip($start_value-1)->take(20)->get();
                 break;
             case 'game-reqs':
-                $result = Req::orderBy('id', 'desc')->where('game_id', $game)->skip($start_value-1)->take(20)->get();
+                $result = Req::orderBy('created_at', 'desc')->where('game_id', $game)->where('status_id', 2)->skip($start_value-1)->take(20)->get();
                 break;
             default:
                 break;

@@ -61,4 +61,8 @@ class User extends Authenticatable
     public function status() {
         return $this->belongsTo(Status::class);
     }
+
+    public function isAdmin() {
+        return $this->role->id === 2;
+    }
 }

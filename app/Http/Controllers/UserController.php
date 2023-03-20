@@ -117,4 +117,20 @@ class UserController extends Controller
 
         return redirect(route('profile', ['id' => $id]));
     }
+
+    public function approveProfile($id) {
+        $user = User::findOrFail($id);
+        $user->status_id = 2;
+        $user->save();
+
+        return redirect(route('profile', ['id' => $id]));
+    }
+
+    public function banProfile($id) {
+        $user = User::findOrFail($id);
+        $user->status_id = 3;
+        $user->save();
+
+        return redirect(route('profile', ['id' => $id]));
+    }
 }

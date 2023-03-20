@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\Auth;
 class PageController extends Controller
 {
     public function index() {
-        $requests = Req::orderBy('id', 'desc')->take(12)->get();
+        $requests = Req::orderBy('created_at', 'desc')->take(12)->get();
         return view('index', ['reqs' => $requests]);
     }
 
     public function my_requests() {
-        $reqs =  Req::orderBy('id', 'desc')->where('author_id', Auth::id())->take(8)->get();
+        $reqs =  Req::orderBy('created_at', 'desc')->where('author_id', Auth::id())->where('status_id', 2)->take(8)->get();
         return view('my-requests', compact('reqs'));
     }
 
@@ -42,7 +42,7 @@ class PageController extends Controller
     }
 
     public function all_requests() {
-        $reqs =  Req::orderBy('id', 'desc')->take(8)->get();
+        $reqs =  Req::orderBy('created_at', 'desc')->where('status_id', 2)->take(8)->get();
         return view('all-requests', compact('reqs'));
     }
 
@@ -52,8 +52,14 @@ class PageController extends Controller
     }
 
     public function game_reqs($id) {
-        $reqs =  Req::orderBy('id', 'desc')->where('game_id', $id)->take(8)->get();
+        $reqs =  Req::orderBy('created_at', 'desc')->where('game_id', $id)->where('status_id', 2)->take(8)->get();
         $game = Game::findorFail($id);
         return view('game-requests', compact('reqs', 'game'));
+    }
+
+    public function admin_panel() {
+        $reqs = Req::orderBy('created_at', 'asc')->where('status_id', 1)->take(8)->get();
+        $profiles = User::orderBy('created_at', 'asc')->where('status_id', 1)->take(8)->get();
+        return view('admin-panel', compact('reqs', 'profiles'));
     }
 }

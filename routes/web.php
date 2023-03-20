@@ -28,8 +28,13 @@ Route::get('/req-scroll', [AjaxController::class, 'endlessScrolling'])->name('sc
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/add-request', [PageController::class, 'add_request'])->name('add-req')->middleware('customAuth');
 Route::get('/game-requests/{id}', [PageController::class, 'game_reqs'])->name('game-reqs');
+Route::get('/admin-panel', [PageController::class, 'admin_panel'])->name('admin-panel')->middleware('isAdmin');
 
 Route::post('/signup', [UserController::class, 'signup'])->name('signup');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::post('/addreq', [RequestController::class, 'add_req'])->name('add-req-post')->middleware('customAuth');
 Route::post('/edit-profile/{id}', [UserController::class, 'editProfile'])->name('edit-profile')->middleware('customAuth');
+Route::post('/approve-profile/{id}', [UserController::class, 'approveProfile'])->name('approveProfile')->middleware('isAdmin');
+Route::post('/ban-profile/{id}', [UserController::class, 'banProfile'])->name('banProfile')->middleware('isAdmin');
+Route::post('/approve-request/{id}', [RequestController::class, 'approveRequest'])->name('approveRequest')->middleware('isAdmin');
+Route::post('/ban-request/{id}', [RequestController::class, 'banRequest'])->name('banRequest')->middleware('isAdmin');

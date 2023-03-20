@@ -33,17 +33,25 @@
                 @endif
             </div>
         </div>
-        <div class="buttons">
-            @if(Auth::user()->id != $profile->id)
-                <a class="button" href="#">Написать сообщение</a>
-            @else
-                <a class="button edit-profile">Редактировать</a>
-                <a class="button" href="#">Удалить</a>
-            @endif
-        </div>
+        @if(Auth::user())
+            <div class="buttons">
+                @if(Auth::user()->isAdmin() && $profile->status->id === 1)
+                    <a class="approve button" href="{{route('approveProfile', ['id' => $profile->id])}}">Опубликовать</a>
+                    <a class="ban button" href="{{route('banProfile', ['id' => $profile->id])}}">Заблокировать</a>
+                @else
+                    @if(Auth::user()->id != $profile->id)
+                        <a class="button" href="#">Написать сообщение</a>
+                    @else()
+                        <a class="button edit-profile">Редактировать</a>
+                    @endif
+                @endif
+            </div>
+        @endif
     </div>
 
-    <x-modal-edit-profile :profile="$profile"></x-modal-edit-profile>
+    @if(Auth::user() && Auth::user()->id == $profile->id)
+        <x-modal-edit-profile :profile="$profile"></x-modal-edit-profile>
+    @endif
 
     <template>
         <div id="template-error" class="alert-table">

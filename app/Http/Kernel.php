@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CheckIsAdmin;
 use App\Http\Middleware\CustomAuthCheck;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -65,5 +66,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'customAuth' => \App\Http\Middleware\CustomAuthCheck::class,
+        'isAdmin' => \App\Http\Middleware\CheckIsAdmin::class,
     ];
 }

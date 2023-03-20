@@ -36,4 +36,20 @@ class RequestController extends Controller
 
         return redirect(route('main-page'));
     }
+
+    public function approveRequest($id) {
+        $req = Req::findOrFail($id);
+        $req->status_id = 2;
+        $req->save();
+
+        return redirect(route('request', ['id' => $id]));
+    }
+
+    public function banRequest($id) {
+        $req = Req::findOrFail($id);
+        $req->status_id = 3;
+        $req->save();
+
+        return redirect(route('request', ['id' => $id]));
+    }
 }
