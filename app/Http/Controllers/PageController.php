@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\Auth;
 class PageController extends Controller
 {
     public function index() {
-        $requests = Req::orderBy('created_at', 'desc')->take(12)->get();
+        $requests = Req::orderBy('created_at', 'desc')->where('status_id', 2)->take(12)->get();
         return view('index', ['reqs' => $requests]);
     }
 
     public function my_requests() {
-        $reqs =  Req::orderBy('created_at', 'desc')->where('author_id', Auth::id())->where('status_id', 2)->take(8)->get();
+        $reqs =  Req::orderBy('created_at', 'desc')->where('author_id', Auth::id())->take(8)->get();
         return view('my-requests', compact('reqs'));
     }
 

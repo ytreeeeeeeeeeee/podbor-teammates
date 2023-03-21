@@ -3,7 +3,9 @@
 namespace App\Http;
 
 use App\Http\Middleware\CheckIsAdmin;
+use App\Http\Middleware\CheckUserStatus;
 use App\Http\Middleware\CustomAuthCheck;
+use App\Http\Middleware\PreventBackHistoryMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -67,5 +69,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'customAuth' => \App\Http\Middleware\CustomAuthCheck::class,
         'isAdmin' => \App\Http\Middleware\CheckIsAdmin::class,
+        'userStatus' => \App\Http\Middleware\CheckUserStatus::class,
+        'reboot' => \App\Http\Middleware\PreventBackHistoryMiddleware::class,
     ];
 }

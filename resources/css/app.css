@@ -90,6 +90,34 @@ main {
     padding-bottom: 10px;
 }
 
+.admin-panel-subtitle {
+    margin: 1em;
+    text-align: center;
+    color: white;
+    font-size: 35px;
+}
+
+.card-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.profile-main {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-weight: bold;
+}
+
+.profile-avatar {
+    flex-basis: 40%;
+}
+
+.profile-nickname {
+    font-size: 20px;
+}
+
 .card-request--list {
     display: flex;
     flex-wrap: wrap;

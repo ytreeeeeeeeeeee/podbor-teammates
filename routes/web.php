@@ -17,7 +17,7 @@ use \App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [PageController::class, 'index'])->name('main-page');
+Route::get('/', [PageController::class, 'index'])->name('main-page')->middleware('reboot');
 Route::get('/my-requests', [PageController::class, 'my_requests'])->name('my-requests')->middleware('customAuth');
 Route::get('/profile/{id}', [PageController::class, 'profile'])->name('profile');
 Route::get('/request/{id}', [PageController::class, 'request'])->name('request');
@@ -26,15 +26,15 @@ Route::get('/games', [PageController::class, 'games'])->name('games');
 Route::get('/all-requests', [PageController::class, 'all_requests'])->name('all-requests');
 Route::get('/req-scroll', [AjaxController::class, 'endlessScrolling'])->name('scroll');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-Route::get('/add-request', [PageController::class, 'add_request'])->name('add-req')->middleware('customAuth');
+Route::get('/add-request', [PageController::class, 'add_request'])->name('add-req')->middleware('customAuth', 'userStatus');
 Route::get('/game-requests/{id}', [PageController::class, 'game_reqs'])->name('game-reqs');
-Route::get('/admin-panel', [PageController::class, 'admin_panel'])->name('admin-panel')->middleware('isAdmin');
+Route::get('/admin-panel', [PageController::class, 'admin_panel'])->name('admin-panel')->middleware('isAdmin', 'reboot');
+Route::get('/approve-profile/{id}', [UserController::class, 'approveProfile'])->name('approveProfile')->middleware('isAdmin');
+Route::get('/ban-profile/{id}', [UserController::class, 'banProfile'])->name('banProfile')->middleware('isAdmin');
+Route::get('/approve-request/{id}', [RequestController::class, 'approveRequest'])->name('approveRequest')->middleware('isAdmin');
+Route::get('/ban-request/{id}', [RequestController::class, 'banRequest'])->name('banRequest')->middleware('isAdmin');
 
 Route::post('/signup', [UserController::class, 'signup'])->name('signup');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::post('/addreq', [RequestController::class, 'add_req'])->name('add-req-post')->middleware('customAuth');
 Route::post('/edit-profile/{id}', [UserController::class, 'editProfile'])->name('edit-profile')->middleware('customAuth');
-Route::post('/approve-profile/{id}', [UserController::class, 'approveProfile'])->name('approveProfile')->middleware('isAdmin');
-Route::post('/ban-profile/{id}', [UserController::class, 'banProfile'])->name('banProfile')->middleware('isAdmin');
-Route::post('/approve-request/{id}', [RequestController::class, 'approveRequest'])->name('approveRequest')->middleware('isAdmin');
-Route::post('/ban-request/{id}', [RequestController::class, 'banRequest'])->name('banRequest')->middleware('isAdmin');

@@ -39,7 +39,7 @@
                     <a class="approve button" href="{{route('approveProfile', ['id' => $profile->id])}}">Опубликовать</a>
                     <a class="ban button" href="{{route('banProfile', ['id' => $profile->id])}}">Заблокировать</a>
                 @else
-                    @if(Auth::user()->id != $profile->id)
+                    @if(Auth::user()->id != $profile->id && $profile->status->id === 2)
                         <a class="button" href="#">Написать сообщение</a>
                     @else()
                         <a class="button edit-profile">Редактировать</a>
