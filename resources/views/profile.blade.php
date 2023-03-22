@@ -36,7 +36,7 @@
         @if(Auth::user())
             <div class="buttons">
                 @if(Auth::user()->isAdmin() && $profile->status->id === 1)
-                    <a class="approve button" href="{{route('approveProfile', ['id' => $profile->id])}}">Опубликовать</a>
+                    <a class="approve button" href="{{route('approveProfile', ['id' => $profile->id])}}">Подтвердить</a>
                     <a class="ban button" href="{{route('banProfile', ['id' => $profile->id])}}">Заблокировать</a>
                 @else
                     @if(Auth::user()->id != $profile->id && $profile->status->id === 2)
