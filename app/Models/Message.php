@@ -9,9 +9,11 @@ class Message extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    public function author() {
+        return $this->belongsTo(User::class);
+    }
 
-    public function user() {
+    public function receiver() {
         return $this->belongsTo(User::class);
     }
 }

@@ -42,7 +42,7 @@ class RequestController extends Controller
         $req->status_id = 2;
         $req->save();
 
-        return redirect(route('request', ['id' => $id]));
+        return redirect(route('admin-panel'));
     }
 
     public function banRequest($id) {
@@ -50,6 +50,6 @@ class RequestController extends Controller
         $req->status_id = 3;
         $req->save();
 
-        return redirect(route('request', ['id' => $id]));
+        return redirect(route('admin-panel'));
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\RequestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
@@ -33,7 +34,10 @@ Route::get('/approve-profile/{id}', [UserController::class, 'approveProfile'])->
 Route::get('/ban-profile/{id}', [UserController::class, 'banProfile'])->name('banProfile')->middleware('isAdmin');
 Route::get('/approve-request/{id}', [RequestController::class, 'approveRequest'])->name('approveRequest')->middleware('isAdmin');
 Route::get('/ban-request/{id}', [RequestController::class, 'banRequest'])->name('banRequest')->middleware('isAdmin');
+Route::get('/chat', [ChatController::class, 'index'])->name('chat')->middleware('customAuth');
+Route::get('/get-messages', [ChatController::class, 'messages'])->name('getMessages')->middleware('customAuth');
 
+Route::post('/send-message', [ChatController::class, 'send'])->name('sendMessages')->middleware('customAuth');
 Route::post('/signup', [UserController::class, 'signup'])->name('signup');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::post('/addreq', [RequestController::class, 'add_req'])->name('add-req-post')->middleware('customAuth');
