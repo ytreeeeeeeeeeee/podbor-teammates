@@ -30,5 +30,5 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript" src="/js/handleErrors.js"></script>
+    <script type="text/javascript" src="/resources/js/handleErrors.js"></script>
 @endsection
