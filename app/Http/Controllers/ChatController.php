@@ -36,18 +36,18 @@ class ChatController extends Controller
         return Message::where('chat_id', $chatId)->get();
     }
 
-    public function send(Request $request) {
+    public function send(MessageFormRequest $request) {
         $messageData = $request->except('_token');
 
         $message = new Message();
 
         $message->author_id = Auth::user()->id;
-        $message->receiver_id = $messageData['receiver'];
+        $message->chat_id = $messageData['chat_id'];
         $message->text = $messageData['text'];
 
-        broadcast(new MessageSent(Auth::user(), User::find($messageData['receiver'], $message)));
-
         $message->save();
+
+        MessageSent::dispatch(Auth::user(), Chat::find($messageData['chat_id']), $message);
 
         return $message;
     }

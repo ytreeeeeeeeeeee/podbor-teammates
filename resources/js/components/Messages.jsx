@@ -1,10 +1,12 @@
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import ChatContext from "../context/chatContext";
 import Message from "./Message";
 
 function Messages() {
     const [text, setText] = useState('');
     const {getMessages, messages, activeChat, sendMessages} = useContext(ChatContext);
+    const messageRef = useRef();
+     const messagesContainer = document.getElementById('messages');
 
     useEffect(() => {
         getMessages();
@@ -14,7 +16,12 @@ function Messages() {
         setText(event.target.value);
     };
 
-    const send = () => {
+    const send = (event) => {
+        event.preventDefault();
+        setText('');
+        messagesContainer.scrollIntoView({behavior: 'smooth'})
+        //messageRef.current.scrollIntoView({behavior: 'smooth'});
+        // messagesContainer.scrollTop = messagesContainer.scrollHeight;
         sendMessages(text, activeChat);
     };
 
@@ -27,8 +34,9 @@ function Messages() {
     return(
         <>
             <div className='message-container'>
-                <div className='messages'>
+                <div className='messages' id='messages' ref={messageRef}>
                     {renderedMessages}
+                    <div></div>
                 </div>
                 <form onSubmit={send}>
                     <input value={text} onChange={handleChange} />

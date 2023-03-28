@@ -1,7 +1,8 @@
 import {createContext, useEffect, useState} from "react";
-import Echo from 'laravel-echo';
+//import Echo from 'laravel-echo';
 import Pusher from "pusher-js";
 import axios from "axios";
+import '../bootstrap';
 
 const ChatContext = createContext();
 
@@ -10,21 +11,17 @@ function Provider({children, chats, user}) {
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        // const pusher = new Pusher('b99b1acf1468b0f87d7c', {
-        //     cluster: 'eu',
-        // });
-        //
-        // const channel = pusher.subscribe('chat');
-        // channel.bind('App//Events//NewMessage', (data) => {
-        //     console.log(data);
-        //     setMessages(data.message);
-        // });
-
         Echo.private(`chat.${activeChat}`)
-            .listen('.message', (e) => {
-                console.log(e.message)
-            })
-    }, []);
+            .listen('message', (e) => {
+                console.log(e);
+                setMessages((messages) => [...messages, e.data]);
+            });
+
+        return () => {
+            Echo.leaveChannel(`chat.${activeChat}`);
+        };
+    }, [activeChat])
+
 
     const getMessages = async () => {
         await axios.get('/get-messages',{
@@ -38,14 +35,18 @@ function Provider({children, chats, user}) {
         });
     }
 
-    const sendMessages = async (message, receiver) => {
+    const sendMessages = async (message) => {
         await axios.post('/send-message', {
-            receiver: receiver,
+            chat_id: activeChat,
             text: message,
         }).then((response) => {
-            setMessages((messages) => [...messages, response.data]);
+            if (response.data){
+                setMessages((messages) => [...messages, response.data]);
+            }
         }).catch(error => {
-            console.log(error.response.data.message);
+            if (error.response.status !== 422) {
+                console.log(error.response.data.message);
+            }
         });
     }
 
