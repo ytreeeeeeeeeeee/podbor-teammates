@@ -1,23 +1,29 @@
 import {createContext, useEffect, useState} from "react";
+import Echo from 'laravel-echo';
 import Pusher from "pusher-js";
 import axios from "axios";
 
 const ChatContext = createContext();
 
 function Provider({children, chats, user}) {
-    const [activeChat, setActiveChat ]= useState(chats[0].id);
+    const [activeChat, setActiveChat ]= useState(chats.length !== 0 ? chats[0].id : -1);
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        const pusher = new Pusher('b99b1acf1468b0f87d7c', {
-            cluster: 'eu',
-        });
+        // const pusher = new Pusher('b99b1acf1468b0f87d7c', {
+        //     cluster: 'eu',
+        // });
+        //
+        // const channel = pusher.subscribe('chat');
+        // channel.bind('App//Events//NewMessage', (data) => {
+        //     console.log(data);
+        //     setMessages(data.message);
+        // });
 
-        const channel = pusher.subscribe('chat');
-        channel.bind('App//Events//NewMessage', (data) => {
-            console.log(data);
-            setMessages(data.message);
-        });
+        Echo.private(`chat.${activeChat}`)
+            .listen('.message', (e) => {
+                console.log(e.message)
+            })
     }, []);
 
     const getMessages = async () => {
