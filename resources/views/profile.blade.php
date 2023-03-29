@@ -40,7 +40,10 @@
                     <a class="ban button" href="{{route('banProfile', ['id' => $profile->id])}}">Заблокировать</a>
                 @else
                     @if(Auth::user()->id != $profile->id && $profile->status->id === 2)
-                        <a class="button" href="#">Написать сообщение</a>
+                        <form action="{{route('add-chat', ['id' => $profile->id])}}" method="post" autocomplete="off">
+                            @csrf
+                            <a class="button" onclick="this.parentNode.submit()">Написать сообщение</a>
+                        </form>
                     @else()
                         <a class="button edit-profile">Редактировать</a>
                     @endif

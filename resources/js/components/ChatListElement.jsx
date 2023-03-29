@@ -9,7 +9,7 @@ function ChatListElement({chat}) {
     }
 
     return (
-        <div className='chats-list__item' onClick={newChat}>
+        <div className='chats-list__item' onClick={newChat} id={chat.id}>
             <img className='card-avatar' src={chat.avatar} alt=""/>
             <p className='profile-nickname'>{chat.name}</p>
         </div>

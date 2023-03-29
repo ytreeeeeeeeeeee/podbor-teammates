@@ -5,12 +5,16 @@ import Message from "./Message";
 function Messages() {
     const [text, setText] = useState('');
     const {getMessages, messages, activeChat, sendMessages} = useContext(ChatContext);
+    // const messagesContainer = document.getElementById('messages');
     const messageRef = useRef();
-     const messagesContainer = document.getElementById('messages');
 
     useEffect(() => {
         getMessages();
     }, [activeChat]);
+
+    useEffect(() => {
+        messageRef.current.scrollTop = messageRef.current.scrollHeight;
+    }, [messages]);
 
     const handleChange = (event) => {
         setText(event.target.value);
@@ -19,9 +23,6 @@ function Messages() {
     const send = (event) => {
         event.preventDefault();
         setText('');
-        messagesContainer.scrollIntoView({behavior: 'smooth'})
-        //messageRef.current.scrollIntoView({behavior: 'smooth'});
-        // messagesContainer.scrollTop = messagesContainer.scrollHeight;
         sendMessages(text, activeChat);
     };
 
@@ -38,9 +39,10 @@ function Messages() {
                     {renderedMessages}
                     <div></div>
                 </div>
-                <form onSubmit={send}>
+                <form onSubmit={send} className='form-chat'>
                     <input value={text} onChange={handleChange} />
-                    <button>бебебе</button>
+                    {/*<img className='send-button' src="https://img.icons8.com/ios-filled/150/e68a01/telegram.png" alt='send-message'/>*/}
+                    <button className='send-button'>Отправить</button>
                 </form>
             </div>
 

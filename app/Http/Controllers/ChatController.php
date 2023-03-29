@@ -13,7 +13,13 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
+        $active_chat = $request->only('activeChat')['activeChat'];
+
+        if (!$active_chat) {
+            $active_chat = 0;
+        }
+
         $user_id = Auth::user()->id;
 
         $chats = Chat::where('first_user_id', $user_id)
@@ -27,7 +33,7 @@ class ChatController extends Controller
             $chats_info[] = ['id' => $chat->id, 'name' => $user->name, 'avatar' => $user->avatar];
         }
 
-        return view('chat', compact('chats_info', 'user_id'));
+        return view('chat', compact('chats_info', 'user_id', 'active_chat'));
     }
 
     public function messages(Request $request) {
@@ -48,7 +54,33 @@ class ChatController extends Controller
         $message->save();
 
         MessageSent::dispatch(Auth::user(), Chat::find($messageData['chat_id']), $message);
+    }
 
-        return $message;
+    public function addChat($id) {
+        $user_id = Auth::user()->id;
+
+        $chat = Chat::where(function ($query) use ($user_id, $id) {
+                $query->where('first_user_id', $user_id)
+                    ->where('second_user_id', $id);
+            })
+            ->orWhere(function ($query) use ($user_id, $id) {
+                $query->where('first_user_id', $id)
+                    ->where('second_user_id', $user_id);
+            })->get();
+
+        if (empty($chat)) {
+            $newChat = new Chat();
+
+            $newChat->first_user_id = Auth::user()->id;
+            $newChat->second_user_id = $id;
+
+            $newChat->save();
+
+            return redirect(route('chat', ['activeChat' => $newChat->id]));
+        }
+        else {
+            return redirect(route('chat', ['activeChat' => $chat[0]->id]));
+        }
+
     }
 }

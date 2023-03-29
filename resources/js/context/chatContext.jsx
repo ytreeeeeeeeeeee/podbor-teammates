@@ -1,24 +1,27 @@
-import {createContext, useEffect, useState} from "react";
-//import Echo from 'laravel-echo';
-import Pusher from "pusher-js";
+import {createContext, useEffect, useRef, useState} from "react";
 import axios from "axios";
 import '../bootstrap';
 
 const ChatContext = createContext();
 
-function Provider({children, chats, user}) {
-    const [activeChat, setActiveChat ]= useState(chats.length !== 0 ? chats[0].id : -1);
+function Provider({children, chats, user, active}) {
+    const [activeChat, setActiveChat ]= useState(chats.length !== 0 ? chats.find(item => item.id == active).id : -1);
     const [messages, setMessages] = useState([]);
+    console.log(activeChat);
 
     useEffect(() => {
+        const oldChat = document.querySelector('.chats-list__item.active-chat');
+        if (oldChat)
+            oldChat.classList.remove('active-chat');
+        // document.querySelector(`#${activeChat}.chats-list__item`).classList.add('active-chat');
+        document.getElementById(activeChat).classList.add('active-chat');
         Echo.private(`chat.${activeChat}`)
-            .listen('message', (e) => {
-                console.log(e);
-                setMessages((messages) => [...messages, e.data]);
+            .listen('.message', (e) => {
+                setMessages((messages) => [...messages, e.message]);
             });
 
         return () => {
-            Echo.leaveChannel(`chat.${activeChat}`);
+            Echo.leave(`chat.${activeChat}`);
         };
     }, [activeChat])
 

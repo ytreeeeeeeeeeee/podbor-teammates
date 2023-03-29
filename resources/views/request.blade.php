@@ -36,7 +36,10 @@
                     <a class="ban button" href="{{route('banRequest', ['id' => $req->id])}}">Заблокировать</a>
                 @else
                     @if(Auth::user()->id != $author->id)
-                        <a class="button" href="#">Написать сообщение</a>
+                        <form action="{{route('add-chat', ['id' => $author->id])}}" method="post" autocomplete="off">
+                            @csrf
+                            <a class="button" onclick="this.parentNode.submit()">Написать сообщение</a>
+                        </form>
                     @elseif(Auth::user()->id == $author->id)
                         <a class="button" href="#">Удалить</a>
                     @endif

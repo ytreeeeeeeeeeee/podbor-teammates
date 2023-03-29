@@ -5,11 +5,12 @@ import {Provider} from "../context/chatContext";
 
 const chatEl = document.getElementById('chat');
 const chatsData = JSON.parse(chatEl.dataset.chats);
-const userData = JSON.parse(chatEl.dataset.user)
+const userData = JSON.parse(chatEl.dataset.user);
+const activeChat = JSON.parse(chatEl.dataset.active);
 const chat = ReactDom.createRoot(chatEl);
 
 chat.render(
-    <Provider chats={chatsData} user={userData}>
+    <Provider chats={chatsData} user={userData} active={activeChat}>
         <Chat />
     </Provider>
 );
