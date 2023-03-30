@@ -52,4 +52,15 @@ class RequestController extends Controller
 
         return redirect(route('admin-panel'));
     }
+
+    public function deleteRequest($id) {
+        $req = Req::find($id);
+        if ($req->author->id === Auth::user()->id) {
+            $req->delete();
+
+            return redirect(route('main-page'));
+        }
+
+        return redirect(route('main-page'));
+    }
 }

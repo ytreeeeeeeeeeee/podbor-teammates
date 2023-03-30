@@ -41,7 +41,10 @@
                             <a class="button" onclick="this.parentNode.submit()">Написать сообщение</a>
                         </form>
                     @elseif(Auth::user()->id == $author->id)
-                        <a class="button" href="#">Удалить</a>
+                        <form action="{{route('delete-req', ['id' => $req->id])}}" method="post" autocomplete="off">
+                            @csrf
+                            <a class="button" onclick="this.parentNode.submit()">Удалить</a>
+                        </form>
                     @endif
                 @endif
             </div>

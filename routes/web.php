@@ -43,3 +43,4 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::post('/addreq', [RequestController::class, 'add_req'])->name('add-req-post')->middleware('customAuth');
 Route::post('/edit-profile/{id}', [UserController::class, 'editProfile'])->name('edit-profile')->middleware('customAuth');
 Route::post('/add-chat/{id}', [ChatController::class, 'addChat'])->name('add-chat')->middleware('customAuth');
+Route::post('/delete-req/{id}', [RequestController::class, 'deleteRequest'])->name('delete-req')->middleware('customAuth');
