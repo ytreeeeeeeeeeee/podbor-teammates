@@ -18,7 +18,3 @@
         @endforeach
     </div>
 @endsection
-
-@section('scripts')
-
-@endsection

@@ -123,7 +123,7 @@ class UserController extends Controller
         $user->status_id = 2;
         $user->save();
 
-        return redirect(route('profile', ['id' => $id]));
+        return redirect(route('admin-panel'));
     }
 
     public function banProfile($id) {
@@ -131,6 +131,6 @@ class UserController extends Controller
         $user->status_id = 3;
         $user->save();
 
-        return redirect(route('profile', ['id' => $id]));
+        return redirect(route('admin-panel'));
     }
 }

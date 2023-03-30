@@ -7,7 +7,6 @@
 .chats-list {
     display: flex;
     flex-direction: column;
-    gap: 5px;
     border-right: solid #e68a01 1px;
     flex-basis: 30%;
     background-color: black;

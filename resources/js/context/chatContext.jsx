@@ -7,13 +7,11 @@ const ChatContext = createContext();
 function Provider({children, chats, user, active}) {
     const [activeChat, setActiveChat ]= useState(chats.length !== 0 ? chats.find(item => item.id == active).id : -1);
     const [messages, setMessages] = useState([]);
-    console.log(activeChat);
 
     useEffect(() => {
         const oldChat = document.querySelector('.chats-list__item.active-chat');
         if (oldChat)
             oldChat.classList.remove('active-chat');
-        // document.querySelector(`#${activeChat}.chats-list__item`).classList.add('active-chat');
         document.getElementById(activeChat).classList.add('active-chat');
         Echo.private(`chat.${activeChat}`)
             .listen('.message', (e) => {

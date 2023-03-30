@@ -16,10 +16,6 @@ class ChatController extends Controller
     public function index(Request $request) {
         $active_chat = $request->only('activeChat')['activeChat'];
 
-        if (!$active_chat) {
-            $active_chat = 0;
-        }
-
         $user_id = Auth::user()->id;
 
         $chats = Chat::where('first_user_id', $user_id)
@@ -27,6 +23,10 @@ class ChatController extends Controller
             ->get();
 
         $chats_info = [];
+
+        if ($active_chat == -1) {
+            $active_chat = $chats[0]->id;
+        }
 
         foreach ($chats as $chat) {
             $user = $chat->first_user_id != $user_id ? $chat->first_user : $chat->second_user;
@@ -68,7 +68,7 @@ class ChatController extends Controller
                     ->where('second_user_id', $user_id);
             })->get();
 
-        if (empty($chat)) {
+        if ($chat->isEmpty()) {
             $newChat = new Chat();
 
             $newChat->first_user_id = Auth::user()->id;
