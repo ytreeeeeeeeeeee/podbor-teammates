@@ -62,4 +62,9 @@ class PageController extends Controller
         $profiles = User::orderBy('created_at', 'asc')->where('status_id', 1)->take(8)->get();
         return view('admin-panel', compact('reqs', 'profiles'));
     }
+
+    public function online() {
+        $games = Game::all();
+        return view('online', compact('games'));
+    }
 }

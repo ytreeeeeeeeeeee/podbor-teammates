@@ -14,9 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('queue', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->primary('user_id');
             $table->foreignId('game_id')->constrained('games');
+            $table->boolean('first_accept')->nullable();
+            $table->boolean('second_accept')->nullable();
+            $table->timestamps();
         });
     }
 

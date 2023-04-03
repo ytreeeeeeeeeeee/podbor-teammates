@@ -9,7 +9,7 @@ class Queue extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    protected $table = 'queue';
 
     public function user() {
         return $this->belongsTo(User::class);

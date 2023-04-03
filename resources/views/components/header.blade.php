@@ -5,7 +5,7 @@
         <a href="{{route('games')}}" class="tab">Игры</a>
     @if(Auth::user())
         <a href="{{route('add-req')}}" class="tab">Создать заявку</a>
-        <a href="#" class="tab">Онлайн подбор</a>
+        <a href="{{route('online')}}" class="tab">Онлайн подбор</a>
     @endif
     </nav>
 

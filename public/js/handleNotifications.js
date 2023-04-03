@@ -1,0 +1,20 @@
+// import Echo from 'laravel-echo';
+//
+// window.Pusher = Pusher;
+//
+// const userAllInfo = document.querySelector('.user-all-info').dataset.userInfo;
+// console.log(userAllInfo);
+//
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key: import.meta.env.VITE_PUSHER_APP_KEY,
+//     wsHost: import.meta.env.VITE_PUSHER_HOST ?? `ws-${import.meta.env.VITE_PUSHER_APP_CLUSTER}.pusher.com`,
+//     wsPort: import.meta.env.VITE_PUSHER_PORT ?? 80,
+//     wssPort: import.meta.env.VITE_PUSHER_PORT ?? 443,
+//     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
+//     enabledTransports: ['ws', 'wss'],
+// });
+//
+// // Echo.private().notification('App.Models.User.' . )
+
+import './bootstrap';

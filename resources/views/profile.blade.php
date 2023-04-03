@@ -45,7 +45,7 @@
                             <a class="button" onclick="this.parentNode.submit()">Написать сообщение</a>
                         </form>
                     @else()
-                        <a class="button edit-profile">Редактировать</a>
+                        <a class="button edit-button">Редактировать</a>
                     @endif
                 @endif
             </div>
@@ -75,9 +75,9 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript" src="/js/signup.js"></script>
-    <script type="text/javascript" src="/js/handleErrors.js"></script>
+    <script type="text/javascript" src="/public/js/signup.js"></script>
+    <script type="text/javascript" src="/public/js/handleErrors.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="/js/modalWindow.js"></script>
+    <script type="text/javascript" src="/public/js/modalWindow.js"></script>
 @endsection

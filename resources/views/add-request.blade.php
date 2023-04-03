@@ -36,6 +36,6 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript" src="/js/signup.js"></script>
-    <script type="text/javascript" src="/js/handleErrors.js"></script>
+    <script type="text/javascript" src="/public/js/signup.js"></script>
+    <script type="text/javascript" src="/public/js/handleErrors.js"></script>
 @endsection

@@ -1,9 +1,9 @@
-const editButton = document.querySelector('.edit-profile');
+const editButton = document.querySelector('.edit-button');
 const modalWindow = document.querySelector('.modal');
 
 if(editButton && modalWindow) {
     editButton.addEventListener('click', () => {
-        modalWindow.style.display = 'block';
+        modalWindow.style.display = 'flex';
     });
 
     modalWindow.addEventListener('click', (event) => {
