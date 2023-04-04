@@ -82,7 +82,7 @@ class RequestController extends Controller
 
         $game_id = $queue_info['game'];
 
-        $teammate = Queue::orderBy('id', 'asc')->where('game_id', $game_id)->take(1)->get();
+        $teammate = Queue::orderBy('id', 'asc')->where('game_id', $game_id)->where('user_id', '<>', Auth::user()->id)->take(1)->get();
 
         if (!count($teammate)){
             $queue_user = new Queue();
@@ -95,7 +95,7 @@ class RequestController extends Controller
             return redirect(route('online'));
         }
         else {
-            $teammate_user = User::find($teammate->id);
+            $teammate_user = User::find($teammate[0]->user_id);
             $teammate_user->notify(new FoundTeammateNotification());
         }
 

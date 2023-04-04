@@ -8,7 +8,5 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('public/vendor/livewire/livewire.js?id=90730a3b0e7144480175') }}"></script>
-    @livewireAssets
-{{--    @livewireScripts--}}
+    @livewireScripts
 @endsection

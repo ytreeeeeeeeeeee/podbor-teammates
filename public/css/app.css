@@ -101,6 +101,11 @@ main {
     padding-bottom: 10px;
 }
 
+.null-search {
+    color: white;
+    justify-items: center;
+}
+
 .admin-panel-subtitle,
 .online-subtitle {
     margin: 1em;
