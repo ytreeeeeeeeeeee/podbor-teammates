@@ -46,7 +46,8 @@ body {
     margin-top: 0 !important;
 }
 
-.add-req-title {
+.add-req-title,
+.reset-title {
     margin-top: 0;
     margin-bottom: 1em;
 }

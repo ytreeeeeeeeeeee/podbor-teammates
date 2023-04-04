@@ -3,9 +3,12 @@
 @section('title', 'Восстановление пароля')
 
 @section('page-content')
+    @if (Session::has('message'))
+        <div class="alert alert-error" data-error="{{json_encode(Session::get('message'))}}"></div>
+    @endif
     <form class="form password-form" action="{{route('reset-password')}}" method="post">
         @csrf
-        <h2 class="title">Восстановление пароля</h2>
+        <h2 class="title reset-title">Восстановление пароля</h2>
         <div class="field-wrap">
             <label>
                 Email<span class="req">*</span>
@@ -23,15 +26,15 @@
             <label>
                 Подтверждение пароля<span class="req">*</span>
             </label>
-            <input name="password_confirm" @error('password_confirm')data-error="{{json_encode($errors->first('password_confirm'))}}" @enderror type="password" required autocomplete="off"/>
+            <input name="password_confirm" type="password" required autocomplete="off"/>
         </div>
         <button type="submit" class="button-form button-block">Отправить</button>
     </form>
-
+    
     <template>
-        <div id="template-error" class="error-table">
+        <div id="template-error" class="alert-table">
             <div class="error-table-header">
-                Error
+                Access rights error
             </div>
             <div class="error-table-body">
                 <div class="error-row">

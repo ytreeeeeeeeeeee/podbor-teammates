@@ -343,6 +343,14 @@ main {
     color: #088d00;
 }
 
+.alert-error {
+    padding: 30px;
+    background-color: #73fa00;
+    border: 1px solid #088d00;
+    border-radius: 10px;
+    color: #088d00;
+}
+
 .online-content {
     display: flex;
     flex-direction: column;

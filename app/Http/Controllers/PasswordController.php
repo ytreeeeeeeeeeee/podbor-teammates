@@ -56,11 +56,11 @@ class PasswordController extends Controller
             ->first();
 
         if(!$isRequestValid){
-            return back()->withErrors(['message' => 'Данные некорректны']);
+            return back()->with('message', 'Данная форма недействительна');
         }
 
         if ($request->password !== $request->password_confirm) {
-            return back()->withErrors(['password' => 'Убедитесь, что вы ввели одинаковые значения в оба поля']);
+            return back()->with('message', 'Убедитесь, что вы ввели корректные данные');
         }
 
         User::where('email', $request->email)
