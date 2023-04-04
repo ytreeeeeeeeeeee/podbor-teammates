@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\RequestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
@@ -37,6 +38,8 @@ Route::get('/ban-request/{id}', [RequestController::class, 'banRequest'])->name(
 Route::get('/chat', [ChatController::class, 'index'])->name('chat')->middleware('customAuth');
 Route::get('/get-messages', [ChatController::class, 'messages'])->name('getMessages')->middleware('customAuth');
 Route::get('/online', [PageController::class, 'online'])->name('online')->middleware('customAuth');
+Route::get('/forget-password', [PasswordController::class, 'forgetPasswordPage'])->name('forget-password-page');
+Route::get('/reset-password/{token}', [PasswordController::class, 'resetPasswordPage'])->name('reset-password-page');
 
 Route::post('/send-message', [ChatController::class, 'send'])->name('sendMessages')->middleware('customAuth');
 Route::post('/signup', [UserController::class, 'signup'])->name('signup');
@@ -46,3 +49,5 @@ Route::post('/edit-profile/{id}', [UserController::class, 'editProfile'])->name(
 Route::post('/add-chat/{id}', [ChatController::class, 'addChat'])->name('add-chat')->middleware('customAuth');
 Route::post('/delete-req/{id}', [RequestController::class, 'deleteRequest'])->name('delete-req')->middleware('customAuth');
 Route::post('/online-search', [RequestController::class, 'onlineSearch'])->name('online-search')->middleware('customAuth');
+Route::post('/forget-password', [PasswordController::class, 'forgetPassword'])->name('forget-password');
+Route::post('/reset-password', [PasswordController::class, 'resetPassword'])->name('reset-password');

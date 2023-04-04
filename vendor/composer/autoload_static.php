@@ -359,8 +359,8 @@ class ComposerStaticInit04c84ef7ccba970601c23186fa122ebf
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -551,6 +551,7 @@ class ComposerStaticInit04c84ef7ccba970601c23186fa122ebf
         'App\\Broadcasting\\ChatChannel' => __DIR__ . '/../..' . '/app/Broadcasting/ChatChannel.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Events\\MessageSent' => __DIR__ . '/../..' . '/app/Events/MessageSent.php',
+        'App\\Events\\PasswordResetRequested' => __DIR__ . '/../..' . '/app/Events/PasswordResetRequested.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Helpers\\MyFunctions' => __DIR__ . '/../..' . '/app/Helpers/MyFunctions.php',
         'App\\Http\\Controllers\\AjaxController' => __DIR__ . '/../..' . '/app/Http/Controllers/AjaxController.php',
@@ -575,6 +576,8 @@ class ComposerStaticInit04c84ef7ccba970601c23186fa122ebf
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\MessageFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MessageFormRequest.php',
+        'App\\Listeners\\PasswordResetNotice' => __DIR__ . '/../..' . '/app/Listeners/PasswordResetNotice.php',
+        'App\\Mail\\ResetPasswordMail' => __DIR__ . '/../..' . '/app/Mail/ResetPasswordMail.php',
         'App\\Models\\Chat' => __DIR__ . '/../..' . '/app/Models/Chat.php',
         'App\\Models\\Game' => __DIR__ . '/../..' . '/app/Models/Game.php',
         'App\\Models\\Message' => __DIR__ . '/../..' . '/app/Models/Message.php',

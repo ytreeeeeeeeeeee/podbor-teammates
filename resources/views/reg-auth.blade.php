@@ -70,6 +70,7 @@
                         <input name="password"
                                @error('auth_error') data-error="{{json_encode($errors->first('auth_error'))}}" @enderror type="password" required autocomplete="off"/>
                     </div>
+                    <p class="forgot"><a href="{{route('forget-password-page')}}">Забыли пароль?</a></p>
                     <button class="button-form button-block">Войти</button>
                 </form>
             </div>

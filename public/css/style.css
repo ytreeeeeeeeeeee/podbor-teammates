@@ -29,6 +29,10 @@ body {
     box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.3);
 }
 
+.password-form {
+    max-width: 800px;
+}
+
 .add-req-form {
     max-width: 100%;
     width: 100%;
@@ -184,7 +188,17 @@ textarea {
 
 .forgot {
     margin-top: -20px;
+    margin-bottom: 20px;
     text-align: right;
+}
+
+.forgot a {
+    text-decoration: none;
+    color: #e68a01;
+}
+
+.forgot a:hover {
+    color: #a86500;
 }
 
 .reg-description {
