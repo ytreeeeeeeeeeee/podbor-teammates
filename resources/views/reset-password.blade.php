@@ -30,7 +30,7 @@
         </div>
         <button type="submit" class="button-form button-block">Отправить</button>
     </form>
-    
+
     <template>
         <div id="template-error" class="alert-table">
             <div class="error-table-header">

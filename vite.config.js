@@ -10,6 +10,7 @@ export default defineConfig({
                 'public/js/app.js',
                 'resources/js/components/chatIndex.jsx',
                 'resources/js/context/chatContext.jsx',
+                'public/js/handleNotifications.js'
             ],
             refresh: true,
         },),

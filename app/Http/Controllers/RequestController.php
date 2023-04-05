@@ -98,7 +98,7 @@ class RequestController extends Controller
         }
         else {
             $teammate_user = User::find($teammate[0]->user_id);
-            $teammate_user->notify(new FoundTeammateNotification());
+            $teammate_user->notify(new FoundTeammateNotification($teammate_user->id));
         }
 
         return redirect(route('main-page'));

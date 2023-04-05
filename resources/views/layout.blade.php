@@ -22,8 +22,7 @@
     <x-footer></x-footer>
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     <script type="text/javascript" src="/public/js/app.js"></script>
-{{--    <script type="module" src="/public/js/bootstrap.js"></script>--}}
-    <script type="module" src="/public/js/handleNotifications.js"></script>
+    @vite('public/js/handleNotifications.js');
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     @yield('scripts')
 </body>
