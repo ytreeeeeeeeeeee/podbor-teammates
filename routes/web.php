@@ -51,3 +51,4 @@ Route::post('/delete-req/{id}', [RequestController::class, 'deleteRequest'])->na
 Route::post('/online-search', [RequestController::class, 'onlineSearch'])->name('online-search')->middleware('customAuth');
 Route::post('/forget-password', [PasswordController::class, 'forgetPassword'])->name('forget-password');
 Route::post('/reset-password', [PasswordController::class, 'resetPassword'])->name('reset-password');
+Route::post('/leave-queue', [RequestController::class, 'leaveQueue'])->name('leave-queue')->middleware('customAuth');

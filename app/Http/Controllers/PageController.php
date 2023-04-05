@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\Queue;
 use Illuminate\Http\Request;
 use App\Models\Request as Req;
 use App\Models\User;
@@ -65,6 +66,7 @@ class PageController extends Controller
 
     public function online() {
         $games = Game::all();
-        return view('online', compact('games'));
+        $inQueue = Queue::where('user_id', Auth::user()->id)->exists();
+        return view('online', compact('games', 'inQueue'));
     }
 }

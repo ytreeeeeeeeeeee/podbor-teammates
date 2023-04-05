@@ -80,6 +80,8 @@ class RequestController extends Controller
                 ->withInput();
         }
 
+
+
         $game_id = $queue_info['game'];
 
         $teammate = Queue::orderBy('id', 'asc')->where('game_id', $game_id)->where('user_id', '<>', Auth::user()->id)->take(1)->get();
@@ -99,6 +101,13 @@ class RequestController extends Controller
             $teammate_user->notify(new FoundTeammateNotification());
         }
 
-        return redirect(route());
+        return redirect(route('main-page'));
+    }
+
+    public function leaveQueue() {
+        $queue = Queue::where('user_id', Auth::user()->id);
+        $queue->delete();
+
+        return redirect(route('online'));
     }
 }
