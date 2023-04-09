@@ -2,30 +2,28 @@
 
 namespace App\Notifications;
 
-use App\Models\User;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 
-class FoundTeammateNotification extends Notification implements ShouldBroadcast
+class RequestDecisionNotification extends Notification
 {
     use Queueable;
 
-    public $user_id;
+    public $accept;
     public $teammate_id;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($user_id, $teammate_id)
+    public function __construct($accept, $teammate_id)
     {
-        $this->user_id = $user_id;
+        $this->accept = $accept;
         $this->teammate_id = $teammate_id;
     }
 
@@ -35,7 +33,7 @@ class FoundTeammateNotification extends Notification implements ShouldBroadcast
      * @param  mixed  $notifiable
      * @return array
      */
-    public function via($notifiable): array
+    public function via($notifiable)
     {
         return ['broadcast'];
     }
@@ -46,16 +44,16 @@ class FoundTeammateNotification extends Notification implements ShouldBroadcast
      * @param  mixed  $notifiable
      * @return array
      */
-
     public function toArray($notifiable)
     {
         return [
-            'teammate' => $this->teammate_id,
+            'decision' => $this->accept,
+            'name' => Auth::user()->name,
         ];
     }
 
     public function broadcastOn()
     {
-        return new PrivateChannel('teammate-found.' . $this->user_id);
+        return new PrivateChannel('decision-online.' . $this->teammate_id);
     }
 }

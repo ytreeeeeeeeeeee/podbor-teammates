@@ -24,7 +24,7 @@ class ChatController extends Controller
 
         $chats_info = [];
 
-        if ($active_chat == -1) {
+        if ($active_chat == -1 && count($chats) > 0) {
             $active_chat = $chats[0]->id;
         }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Queue;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect(route('reg-auth') . '?tab=signup')
+            return redirect(route('reg-auth', ['tab' => 'signup']))
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -38,7 +39,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect(route('reg-auth') . '?tab=login');
+        return redirect(route('reg-auth', ['tab' => 'login']));
     }
 
     public function login(Request $request) {
@@ -50,7 +51,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect(route('reg-auth') . '?tab=login')
+            return redirect(route('reg-auth', ['tab' => 'login']))
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -59,12 +60,15 @@ class UserController extends Controller
             return redirect(route('main-page'));
         }
 
-        return redirect(route('reg-auth') . '?tab=login')
+        return redirect(route('reg-auth', ['tab' => 'login']))
             ->withErrors(['auth_error' => 'Email или пароль введены некорректно'])
             ->withInput();
     }
 
     public function logout() {
+        $queue = Queue::find(Auth::user()->id);
+        if($queue)
+            $queue->delete();
         Auth::logout();
         return redirect(route('main-page'));
     }
@@ -118,18 +122,22 @@ class UserController extends Controller
         return redirect(route('profile', ['id' => $id]));
     }
 
-    public function approveProfile($id) {
+    public function profileDecision(Request $request, $id){
         $user = User::findOrFail($id);
-        $user->status_id = 2;
-        $user->save();
+        $action = $request->only('action')['action'];
 
-        return redirect(route('admin-panel'));
-    }
-
-    public function banProfile($id) {
-        $user = User::findOrFail($id);
-        $user->status_id = 3;
-        $user->save();
+        switch ($action) {
+            case 'approve':
+                $user->status_id = 2;
+                $user->save();
+                break;
+            case 'ban':
+                $user->status_id = 3;
+                $user->save();
+                break;
+            default:
+                break;
+        }
 
         return redirect(route('admin-panel'));
     }

@@ -12,7 +12,8 @@ function Provider({children, chats, user, active}) {
         const oldChat = document.querySelector('.chats-list__item.active-chat');
         if (oldChat)
             oldChat.classList.remove('active-chat');
-        document.getElementById(activeChat).classList.add('active-chat');
+        if (activeChat > -1)
+            document.getElementById(activeChat).classList.add('active-chat');
         Echo.private(`chat.${activeChat}`)
             .listen('.message', (e) => {
                 setMessages((messages) => [...messages, e.message]);

@@ -10,6 +10,7 @@ class Queue extends Model
     use HasFactory;
 
     protected $table = 'queue';
+    protected $primaryKey = 'user_id';
 
     public function user() {
         return $this->belongsTo(User::class);

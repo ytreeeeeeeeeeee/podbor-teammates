@@ -2,31 +2,30 @@
 
 namespace App\Notifications;
 
-use App\Models\User;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Illuminate\Support\Facades\Auth;
 
-class FoundTeammateNotification extends Notification implements ShouldBroadcast
+class ContinueOnlineSearch extends Notification
 {
     use Queueable;
 
-    public $user_id;
     public $teammate_id;
+    public $user_id;
+    public $owner;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($user_id, $teammate_id)
+    public function __construct($teammate_id, $user_id, $owner)
     {
-        $this->user_id = $user_id;
         $this->teammate_id = $teammate_id;
+        $this->user_id = $user_id;
+        $this->owner = $owner;
     }
 
     /**
@@ -35,7 +34,7 @@ class FoundTeammateNotification extends Notification implements ShouldBroadcast
      * @param  mixed  $notifiable
      * @return array
      */
-    public function via($notifiable): array
+    public function via($notifiable)
     {
         return ['broadcast'];
     }
@@ -46,16 +45,16 @@ class FoundTeammateNotification extends Notification implements ShouldBroadcast
      * @param  mixed  $notifiable
      * @return array
      */
-
     public function toArray($notifiable)
     {
         return [
-            'teammate' => $this->teammate_id,
+            'exception' => $this->user_id,
+            'owner' => $this->owner,
         ];
     }
 
     public function broadcastOn()
     {
-        return new PrivateChannel('teammate-found.' . $this->user_id);
+        return new PrivateChannel('continue.' . $this->teammate_id);
     }
 }

@@ -31,15 +31,12 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/add-request', [PageController::class, 'add_request'])->name('add-req')->middleware('customAuth', 'userStatus');
 Route::get('/game-requests/{id}', [PageController::class, 'game_reqs'])->name('game-reqs');
 Route::get('/admin-panel', [PageController::class, 'admin_panel'])->name('admin-panel')->middleware('isAdmin', 'reboot');
-Route::get('/approve-profile/{id}', [UserController::class, 'approveProfile'])->name('approveProfile')->middleware('isAdmin');
-Route::get('/ban-profile/{id}', [UserController::class, 'banProfile'])->name('banProfile')->middleware('isAdmin');
-Route::get('/approve-request/{id}', [RequestController::class, 'approveRequest'])->name('approveRequest')->middleware('isAdmin');
-Route::get('/ban-request/{id}', [RequestController::class, 'banRequest'])->name('banRequest')->middleware('isAdmin');
 Route::get('/chat', [ChatController::class, 'index'])->name('chat')->middleware('customAuth');
 Route::get('/get-messages', [ChatController::class, 'messages'])->name('getMessages')->middleware('customAuth');
 Route::get('/online', [PageController::class, 'online'])->name('online')->middleware('customAuth');
 Route::get('/forget-password', [PasswordController::class, 'forgetPasswordPage'])->name('forget-password-page');
 Route::get('/reset-password/{token}', [PasswordController::class, 'resetPasswordPage'])->name('reset-password-page');
+Route::get('/notification-handle', [AjaxController::class, 'handleNotification'])->name('not-handle')->middleware('customAuth');
 
 Route::post('/send-message', [ChatController::class, 'send'])->name('sendMessages')->middleware('customAuth');
 Route::post('/signup', [UserController::class, 'signup'])->name('signup');
@@ -52,3 +49,8 @@ Route::post('/online-search', [RequestController::class, 'onlineSearch'])->name(
 Route::post('/forget-password', [PasswordController::class, 'forgetPassword'])->name('forget-password');
 Route::post('/reset-password', [PasswordController::class, 'resetPassword'])->name('reset-password');
 Route::post('/leave-queue', [RequestController::class, 'leaveQueue'])->name('leave-queue')->middleware('customAuth');
+Route::post('/profile-decision/{id}', [UserController::class, 'profileDecision'])->name('profile-decision')->middleware('isAdmin');
+Route::post('/request-decision/{id}', [RequestController::class, 'requestDecision'])->name('request-decision')->middleware('isAdmin');
+Route::post('/online-decision/{id}', [RequestController::class, 'onlineDecision'])->name('online-decision')->middleware('customAuth');
+Route::post('/test/{id}', [RequestController::class, 'test'])->name('test')->middleware('customAuth');
+Route::post('/decline-search/{id}', [RequestController::class, 'declineRequest'])->name('decline-request')->middleware('customAuth');

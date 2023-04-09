@@ -32,8 +32,11 @@
         @if(Auth::user())
             <div class="buttons">
                 @if(Auth::user()->isAdmin() && $req->status->id === 1)
-                    <a class="approve button" href="{{route('approveRequest', ['id' => $req->id])}}">Опубликовать</a>
-                    <a class="ban button" href="{{route('banRequest', ['id' => $req->id])}}">Заблокировать</a>
+                    <form action="{{route('request-decision', ['id' => $req->id])}}" method="post" autocomplete="off">
+                        @csrf
+                        <button type="submit" class="approve button" name="action" value="approve">Подтвердить</button>
+                        <button type="submit" class="ban button" name="action" value="ban">Заблокировать</button>
+                    </form>
                 @else
                     @if(Auth::user()->id != $author->id)
                         <form action="{{route('add-chat', ['id' => $author->id])}}" method="post" autocomplete="off">

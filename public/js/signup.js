@@ -49,7 +49,7 @@ $('.tab a').on('click', function (e) {
   $('.tab-content > div').not(target).hide();
 
   if (changeText) {
-      const inputs = $('.tab-content ' + target + ' input');
+      const inputs = $('.tab-content ' + target + ' input:not([name="_token"])');
       $.each(inputs, function (index, input) {
           $(input).val('');
           let label = $(input).prev('label');

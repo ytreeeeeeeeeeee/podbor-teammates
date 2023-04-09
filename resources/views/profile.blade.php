@@ -36,8 +36,11 @@
         @if(Auth::user())
             <div class="buttons">
                 @if(Auth::user()->isAdmin() && $profile->status->id === 1)
-                    <a class="approve button" href="{{route('approveProfile', ['id' => $profile->id])}}">Подтвердить</a>
-                    <a class="ban button" href="{{route('banProfile', ['id' => $profile->id])}}">Заблокировать</a>
+                    <form action="{{route('profile-decision', ['id' => $profile->id])}}" method="post" autocomplete="off">
+                        @csrf
+                        <button type="submit" class="approve button" name="action" value="approve">Подтвердить</button>
+                        <button type="submit" class="ban button" name="action" value="ban">Заблокировать</button>
+                    </form>
                 @else
                     @if(Auth::user()->id != $profile->id && $profile->status->id === 2)
                         <form action="{{route('add-chat', ['id' => $profile->id])}}" method="post" autocomplete="off">
@@ -56,22 +59,7 @@
         <x-modal-edit-profile :profile="$profile"></x-modal-edit-profile>
     @endif
 
-    <template>
-        <div id="template-error" class="alert-table">
-            <div class="error-table-header">
-                There were some problems when updating the profile
-            </div>
-            <div class="error-table-body">
-                <div class="error-row">
-                    <div class="error-cell">
-                        <i class="fa fa-exclamation-circle"></i>
-                    </div>
-                    <div id="error-text" class="error-cell">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </template>
+    <x-error-alert></x-error-alert>
 @endsection
 
 @section('scripts')

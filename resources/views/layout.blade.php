@@ -16,13 +16,17 @@
 <body>
     <x-header></x-header>
     <main @yield('class')>
-        <div class="user-all-info" data-user-info="{{json_encode(Auth::user())}}"></div>
+        @if(Auth::check())
+            <div class="user-all-info" data-user-info="{{json_encode(Auth::user()->id)}}"></div>
+        @endif
         @yield('page-content')
     </main>
     <x-footer></x-footer>
-    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     <script type="text/javascript" src="/public/js/app.js"></script>
-    @vite('public/js/handleNotifications.js');
+    @if(Auth::check())
+        @vite('public/js/handleNotifications.js')
+        <script type="text/javascript" src="/public/js/onlyAuthorized.js"></script>
+    @endif
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     @yield('scripts')
 </body>

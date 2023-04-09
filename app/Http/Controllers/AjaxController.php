@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Request as Req;
 use Illuminate\Support\Facades\Auth;
@@ -38,5 +39,11 @@ class AjaxController extends Controller
         return $html;
     }
 
+    public function handleNotification(Request $request) {
+        $data = $request->all();
 
+        $profile = User::find($data['teammate']);
+
+        return view('components.notification', ['profile' => $profile, 'owner' => $data['owner']]);
+    }
 }

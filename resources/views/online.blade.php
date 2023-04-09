@@ -3,6 +3,9 @@
 @section('title', 'Онлайн-подбор')
 
 @section('page-content')
+    @if(Session::has('found_teammate'))
+        <div class="no-visible" id="teammate-info" data-teammate="{{Session::get('found_teammate.teammate')}}"></div>
+    @endif
     <div class="alert" @error('game')data-error="{{json_encode($errors->first('game'))}}" @enderror></div>
     <h2 class="title">Онлайн-подбор</h2>
     @if(!$inQueue)
@@ -20,6 +23,8 @@
             <h3 class="subtitle online-subtitle">Если вы покинете очередь, то поиск напарников остановится</h3>
         </div>
     @endif
+
+    <x-error-alert></x-error-alert>
 @endsection
 
 @section('scripts')

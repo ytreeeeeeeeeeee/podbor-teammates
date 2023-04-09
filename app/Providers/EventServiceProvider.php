@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use App\Broadcasting\ChatChannel;
 use App\Events\PasswordResetRequested;
+use App\Listeners\FoundTeammateListener;
 use App\Listeners\PasswordResetNotice;
+use App\Notifications\FoundTeammateNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
