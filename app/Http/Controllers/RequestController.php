@@ -94,11 +94,13 @@ class RequestController extends Controller
             $exception = [];
         }
         else {
-            $exception = json_decode($queue_info['exception']);
+            $exception = (array) json_decode($queue_info['exception']);
         }
 
         $teammate = Queue::orderBy('created_at', 'asc')->whereNotIn('user_id', $exception)->where('game_id', $game_id)->where('user_id', '<>', Auth::user()->id)->take(1)->get();
 
+        if ($request->ajax())
+            return [$teammate, $exception];
         if ($teammate->isEmpty()){
             $queue_user = new Queue();
 
@@ -121,12 +123,12 @@ class RequestController extends Controller
             if (!$request->ajax())
                 return redirect(route('online'));
             else
-                return true;
+                return false;
         }
     }
 
     public function leaveQueue() {
-        $queue = Queue::where('user_id', Auth::user()->id)->get();
+        $queue = Queue::where('user_id', Auth::user()->id);
         $queue->delete();
 
         return redirect(route('online'));
@@ -158,8 +160,6 @@ class RequestController extends Controller
                 $req->save();
                 $teammate->notify(new ContinueOnlineSearch($teammate->id, Auth::user()->id, !$owner));
                 $user->notify(new ContinueOnlineSearch(Auth::user()->id, $teammate->id, $owner));
-
-//                $teammate->notify(new RequestDecisionNotification(false, $teammate->id));
                 break;
             default:
                 break;

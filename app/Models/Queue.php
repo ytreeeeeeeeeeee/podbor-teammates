@@ -11,6 +11,10 @@ class Queue extends Model
 
     protected $table = 'queue';
     protected $primaryKey = 'user_id';
+    protected $fillable = [
+        'user_id',
+        'game_id',
+    ];
 
     public function user() {
         return $this->belongsTo(User::class);

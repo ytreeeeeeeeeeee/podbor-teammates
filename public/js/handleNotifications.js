@@ -24,17 +24,20 @@ Echo.private('redirect.' + userInfoId).notification((notification) => {
 
 Echo.private('continue.' + userInfoId).notification((notification) => {
     document.querySelector('.modal-request').remove();
+    console.log(notification.owner);
     if (!notification.owner) {
         let array = JSON.parse(localStorage.getItem('exception')) || [];
         localStorage.setItem('exception', JSON.stringify(typeof array == 'object' ? array.push(notification.exception) : [array, notification.exception]));
+        let exception = localStorage.getItem('exception')
         let formData = new FormData();
-        formData.append('exception', localStorage.getItem('exception'));
+        formData.append('exception', exception);
         formData.append('game', localStorage.getItem('game'));
 
         axios.post('/online-search', formData)
             .then((response) => {
-                if(response.data)
-                    window.location.href = '/online'
+                console.log(response.data);
+                // if(response.data)
+                //     window.location.href = '/online'
             }).catch((error) => {
                 console.log(error.response.data.message);
             });
