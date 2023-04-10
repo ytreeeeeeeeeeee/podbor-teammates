@@ -5,6 +5,15 @@ const userInfoId = JSON.parse(document.querySelector('.user-all-info').dataset.u
 
 const csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
+let globalTeammate = '';
+
+const handleUnload = () => {
+    let formData = new FormData();
+    formData.append('teammate', globalTeammate);
+
+    axios.post(`/decline-search/${globalTeammate}`, formData)
+}
+
 Echo.private('teammate-found.' + userInfoId).notification((notification) => {
     displayModalOnline(notification.teammate, true);
 });
@@ -24,10 +33,11 @@ Echo.private('redirect.' + userInfoId).notification((notification) => {
 
 Echo.private('continue.' + userInfoId).notification((notification) => {
     document.querySelector('.modal-request').remove();
-    console.log(notification.owner);
+    window.removeEventListener('beforeunload', handleUnload);
     if (!notification.owner) {
         let array = JSON.parse(localStorage.getItem('exception')) || [];
-        localStorage.setItem('exception', JSON.stringify(typeof array == 'object' ? array.push(notification.exception) : [array, notification.exception]));
+        typeof array == 'object' ? array.push(notification.exception) : array = [array, notification.exception];
+        localStorage.setItem('exception', JSON.stringify(array));
         let exception = localStorage.getItem('exception')
         let formData = new FormData();
         formData.append('exception', exception);
@@ -35,9 +45,10 @@ Echo.private('continue.' + userInfoId).notification((notification) => {
 
         axios.post('/online-search', formData)
             .then((response) => {
-                console.log(response.data);
-                // if(response.data)
-                //     window.location.href = '/online'
+                if(response.data) {
+                    localStorage.clear();
+                }
+                window.location.href = '/online';
             }).catch((error) => {
                 console.log(error.response.data.message);
             });
@@ -74,6 +85,7 @@ if (teammateInfo)
     await displayModalOnline(teammateInfo.dataset.teammate, false);
 
 async function displayModalOnline(teammate, owner) {
+    globalTeammate = teammate;
     await axios.get('/notification-handle', {
         params: {
             teammate: teammate,
@@ -81,9 +93,7 @@ async function displayModalOnline(teammate, owner) {
         }
     }).then((response) => {
         if (!owner) {
-            window.addEventListener('beforeunload', function handle() {
-                handleUnload(teammate);
-            });
+            window.addEventListener('beforeunload', handleUnload);
         }
         const main = document.querySelector('main');
         main.innerHTML += response.data;
@@ -113,11 +123,4 @@ async function displayModalOnline(teammate, owner) {
     }).catch((error) => {
         console.log(error.response.data.message);
     });
-}
-
-function handleUnload(teammate) {
-    let formData = new FormData();
-    formData.append('teammate', teammate);
-
-    axios.post(`/decline-search/${teammate}`, formData)
 }

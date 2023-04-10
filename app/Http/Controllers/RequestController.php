@@ -99,8 +99,6 @@ class RequestController extends Controller
 
         $teammate = Queue::orderBy('created_at', 'asc')->whereNotIn('user_id', $exception)->where('game_id', $game_id)->where('user_id', '<>', Auth::user()->id)->take(1)->get();
 
-        if ($request->ajax())
-            return [$teammate, $exception];
         if ($teammate->isEmpty()){
             $queue_user = new Queue();
 
