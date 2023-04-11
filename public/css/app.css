@@ -442,6 +442,18 @@ main {
     }
 }
 
+.error-container {
+    margin-top: 50%;
+    transform: translateY(-130%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-error {
+    background-color: #e68a01;
+}
 
 /*FOOTER*/
 

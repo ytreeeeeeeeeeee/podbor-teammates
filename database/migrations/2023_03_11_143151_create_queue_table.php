@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('user_id')->unique()->primary()->constrained('users');
             $table->foreignId('game_id')->constrained('games');
             $table->boolean('first_accept')->nullable();
-            $table->boolean('second_accept')->nullable();
             $table->timestamps();
         });
     }

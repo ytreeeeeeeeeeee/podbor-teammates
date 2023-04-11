@@ -50,7 +50,7 @@ Echo.private('continue.' + userInfoId).notification((notification) => {
                 }
                 window.location.href = '/online';
             }).catch((error) => {
-                console.log(error.response.data.message);
+                console.log(error.response);
             });
     }
 });

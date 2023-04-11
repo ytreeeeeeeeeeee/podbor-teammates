@@ -24,7 +24,7 @@
             </div>
             <div class="field-wrap">
                 <select name="game" class="add-req-game">
-                    <option selected="selected">Выберите игру</option>
+                    <option selected disabled hidden>Выберите игру</option>
                     @foreach($games as $game)
                         <option value="{{$game->id}}">{{$game->title}}</option>
                     @endforeach

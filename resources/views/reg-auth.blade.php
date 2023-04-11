@@ -45,7 +45,7 @@
                     </div>
                     <div class="field-wrap">
                         <select name="country" class="reg-country">
-                            <option selected="selected">Выберите страну</option>
+                            <option selected disabled hidden>Выберите страну</option>
                             <option value="RU">Россия</option>
                         </select>
                     </div>
