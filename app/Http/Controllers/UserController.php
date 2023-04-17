@@ -75,50 +75,39 @@ class UserController extends Controller
 
     public function editProfile($id, Request $request) {
         $newData = $request->except('_token');
-
         $validator = Validator::make($newData, [
             'name' => 'required',
             'description' => 'required',
             'avatar' => 'mimes:png,jpg,jpeg'
         ]);
-
         if ($validator->fails()) {
             return redirect(route('profile', ['id' => $id]))
                 ->withErrors($validator)
                 ->withInput();
         }
-
         $user = User::find($id);
-
         foreach ($newData as $key => $value) {
             if ($key === 'avatar' && $value) {
                 if (Storage::exists($user->{$key}) && $user->{$key} !== 'public/storage/avatars/base_avatar.jpeg') {
                     unlink(storage_path('app/public/avatars/' . basename($user->{$key})));
                     Storage::delete($user->{$key});
                 }
-
                 $image = Image::make($newData['avatar'])->fit(400, 400);
                 $path = 'avatars/' . substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 16) . '.jpg';
-
                 $image->save(storage_path('app/public/' . $path));
-
                 $user->{$key} = 'public/storage/' . $path;
                 continue;
             }
             else if ($key === 'avatar' && !$value) {
                 continue;
             }
-
             if ($user->{$key} !== $value) {
-
                 $user->{$key} = $value;
             }
         }
-
         if ($user->isDirty()) {
             $user->save();
         }
-
         return redirect(route('profile', ['id' => $id]));
     }
 

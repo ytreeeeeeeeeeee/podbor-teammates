@@ -17,7 +17,7 @@ use Carbon\Carbon;
 
 class RequestController extends Controller
 {
-    public function add_req(Request $request) {
+    public function addReq(Request $request) {
         $reqData = $request->all();
 
         $validator = Validator::make($reqData, [
@@ -162,10 +162,6 @@ class RequestController extends Controller
             default:
                 break;
         }
-    }
-
-    public function test(Request $request, $id) {
-        return 'test' . $id;
     }
 
     public function declineRequest(Request $request, $id) {
