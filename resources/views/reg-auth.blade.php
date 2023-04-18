@@ -47,6 +47,15 @@
                         <select name="country" class="reg-country">
                             <option selected disabled hidden>Выберите страну</option>
                             <option value="RU">Россия</option>
+                            <option value="BY">Беларусь</option>
+                            <option value="KZ">Казахстан</option>
+                            <option value="DE">Германия</option>
+                            <option value="FR">Франция</option>
+                            <option value="PL">Польша</option>
+                            <option value="US">США</option>
+                            <option value="IT">Италия</option>
+                            <option value="CN">Китай</option>
+                            <option value="NL">Нидерланды</option>
                         </select>
                     </div>
                     <button type="submit" class="button-form button-block">Зарегистрироваться</button>

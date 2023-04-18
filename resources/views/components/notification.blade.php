@@ -7,7 +7,7 @@
                 <div class="user-graph">
                     <div class="user-imgs">
                         <img class="user-avatar" src="{{asset($profile->avatar)}}" alt="avatar"/>
-                        <img class="user-flag" src="https://www.countryflagicons.com/FLAT/64/RU.png" alt="flag"/>
+                        <img class="user-flag" src="https://www.countryflagicons.com/FLAT/64/{{$profile->country}}.png" alt="flag"/>
                     </div>
                     <div class="user-categories">
                         <p class="user-role">{{$profile->role->title}}</p>
