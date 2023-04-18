@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             StatusSeeder::class,
             RoleSeeder::class,
             GameSeeder::class,
+            UserSeeder::class,
+            RequestSeeder::class,
         ]);
     }
 }

@@ -14,7 +14,7 @@
                 </div>
                 <div class="user-categories">
                     <p class="user-role">{{$profile->role->title}}</p>
-                    <p class="user-status">{{$profile->status->title}}</p>
+                    <p data-status="{{$profile->status->id}}" class="user-status">{{$profile->status->title}}</p>
                 </div>
             </div>
             <div class="user-text">

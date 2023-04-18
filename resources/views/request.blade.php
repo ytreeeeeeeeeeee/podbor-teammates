@@ -9,7 +9,7 @@
             <div class="user-graph">
                 <a class="user-imgs" href="{{route('profile', ['id' => $author->id])}}">
                     <img class="user-avatar" src="{{asset($author->avatar)}}" alt="avatar"/>
-                    <img class="user-flag" src="https://www.countryflagicons.com/FLAT/64/RU.png" alt="flag"/>
+                    <img class="user-flag" src="https://www.countryflagicons.com/FLAT/64/{{$author->country}}.png" alt="flag"/>
                 </a>
                 <a href="{{route('game-reqs', ['id' => $game->id])}}" class="request-game">{{$game->title}}</a>
             </div>

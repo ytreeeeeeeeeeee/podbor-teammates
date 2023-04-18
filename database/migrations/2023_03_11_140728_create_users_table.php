@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('country');
             $table->foreignId('role_id')->default(1)->constrained('roles');
             $table->foreignId('status_id')->default(1)->constrained('statuses');
+//            $table->timestamp('email_verified_at')->nullable();
+//            $table->rememberToken()->nullable();
             $table->timestamps();
         });
     }
