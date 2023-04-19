@@ -1,24 +1,3 @@
-function statusColor(selector) {
-    const status = document.querySelector(selector);
-    if (status) {
-        let color = '';
-        switch (status.dataset.status) {
-            case '1':
-                color = "yellow";
-                break;
-            case '2':
-                color = "green";
-                break;
-            case '3':
-                color = "red";
-                break;
-            default:
-                break;
-        }
-        status.style.backgroundColor = color;
-    }
-}
-
 function truncateText(selector, maxLength) {
     let elements = document.querySelectorAll(selector);
 
@@ -33,4 +12,3 @@ function truncateText(selector, maxLength) {
 }
 
 truncateText(".card-description", 75);
-statusColor('.user-status');

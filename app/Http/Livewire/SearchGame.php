@@ -11,7 +11,6 @@ class SearchGame extends Component
 
     public function render()
     {
-//        sleep(1);
         if ($this->term == '') {
             $games = Game::all();
         }

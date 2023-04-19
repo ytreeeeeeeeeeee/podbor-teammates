@@ -6,12 +6,17 @@ const userInfoId = JSON.parse(document.querySelector('.user-all-info').dataset.u
 const csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
 let globalTeammate = '';
+let globalOwner = false;
 
 const handleUnload = () => {
     let formData = new FormData();
+    formData.append('action', 'ban');
     formData.append('teammate', globalTeammate);
+    formData.append('owner', globalOwner);
 
-    axios.post(`/decline-search/${globalTeammate}`, formData)
+    axios.post(`/online-decision/${globalOwner ? userInfoId : globalTeammate}`, formData,{
+        withCredentials: true,
+    });
 }
 
 Echo.private('teammate-found.' + userInfoId).notification((notification) => {
@@ -86,15 +91,15 @@ if (teammateInfo)
 
 async function displayModalOnline(teammate, owner) {
     globalTeammate = teammate;
+    globalOwner = owner;
     await axios.get('/notification-handle', {
         params: {
             teammate: teammate,
             owner: owner
         }
     }).then((response) => {
-        if (!owner) {
-            window.addEventListener('beforeunload', handleUnload);
-        }
+        window.addEventListener('beforeunload', handleUnload);
+
         const main = document.querySelector('main');
         main.innerHTML += response.data;
         const myForm = document.getElementById('decision-online-form');

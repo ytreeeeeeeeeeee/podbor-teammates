@@ -188,7 +188,8 @@ main {
     gap: 30px;
 }
 
-.card-request {
+.card-request,
+.card-admin-profile {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -197,9 +198,16 @@ main {
     border-radius: 30px;
     padding: 20px;
     height: 250px;
-    width: 250px;
     text-decoration: none;
     color: black;
+}
+
+.card-request {
+    width: 250px;
+}
+
+.card-admin-profile {
+    width: 300px;
 }
 
 .card-avatar {

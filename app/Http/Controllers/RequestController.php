@@ -169,14 +169,17 @@ class RequestController extends Controller
         }
     }
 
-    public function declineRequest(Request $request, $id) {
-        $data = $request->except('_token');
-        $req = Queue::firstWhere('user_id', $id);
-        $teammate = User::find($data['teammate']);
-
-        $req->first_accept = null;
-        $req->save();
-
-        $teammate->notify(new ContinueOnlineSearch($teammate->id, Auth::user()->id, true));
-    }
+//    public function declineRequest(Request $request, $id) {
+//        $data = $request->except('_token');
+//        $req = Queue::firstWhere('user_id', $id);
+//        $teammate = User::find($data['teammate']);
+//        $owner = filter_var($data['owner'], FILTER_VALIDATE_BOOLEAN);
+//        $user = User::find(Auth::user()->id);
+//
+//        $req->first_accept = null;
+//        $req->save();
+//
+//        $teammate->notify(new ContinueOnlineSearch($teammate->id, Auth::user()->id, !$owner));
+//        $user->notify(new ContinueOnlineSearch(Auth::user()->id, $teammate->id, $owner));
+//    }
 }

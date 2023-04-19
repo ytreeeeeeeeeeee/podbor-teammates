@@ -33,7 +33,7 @@ Route::get('/game-requests/{id}', [PageController::class, 'game_reqs'])->name('g
 Route::get('/admin-panel', [PageController::class, 'admin_panel'])->name('admin-panel')->middleware('isAdmin', 'reboot');
 Route::get('/chat', [ChatController::class, 'index'])->name('chat')->middleware('customAuth');
 Route::get('/get-messages', [ChatController::class, 'messages'])->name('getMessages')->middleware('customAuth');
-Route::get('/online', [PageController::class, 'online'])->name('online')->middleware('customAuth');
+Route::get('/online', [PageController::class, 'online'])->name('online')->middleware('customAuth', 'userStatus');
 Route::get('/forget-password', [PasswordController::class, 'forgetPasswordPage'])->name('forget-password-page');
 Route::get('/reset-password/{token}', [PasswordController::class, 'resetPasswordPage'])->name('reset-password-page');
 Route::get('/notification-handle', [AjaxController::class, 'handleNotification'])->name('not-handle')->middleware('customAuth');

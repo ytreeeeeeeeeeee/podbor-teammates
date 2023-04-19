@@ -20,6 +20,7 @@ class RequestSeeder extends Seeder
             'description' => 'Играю на ПК, ищу сильных и опытных игроков, готовых сражаться в рейтинговых играх.',
             'game_id' => 1,
             'author_id' => 3,
+            'status_id' => 2,
             'created_at' => now(),
         ]);
 
@@ -28,6 +29,7 @@ class RequestSeeder extends Seeder
             'description' => 'Играю в Dota 2 уже несколько лет и ищу игроков, готовых играть на высоком уровне и участвовать в соревнованиях.',
             'game_id' => 2,
             'author_id' => 1,
+            'status_id' => 2,
             'created_at' => now(),
         ]);
 
@@ -36,6 +38,7 @@ class RequestSeeder extends Seeder
             'description' => 'Я люблю играть в Minecraft и хочу создать огромный город, для этого ищу тиммейтов, которые помогут мне в этом труде.',
             'game_id' => 3,
             'author_id' => 5,
+            'status_id' => 2,
             'created_at' => now(),
         ]);
 
@@ -44,6 +47,7 @@ class RequestSeeder extends Seeder
             'description' => 'Ищу тиммейтов, чтобы участвовать в рейсингах и побеждать соперников в многопользовательском режиме игры.',
             'game_id' => 4,
             'author_id' => 8,
+            'status_id' => 2,
             'created_at' => now(),
         ]);
 
@@ -52,6 +56,7 @@ class RequestSeeder extends Seeder
             'description' => 'Хочу поучаствовать в соревнованиях Fortnite и ищу тиммейтов, чтобы совместными усилиями добиться победы.',
             'game_id' => 5,
             'author_id' => 4,
+            'status_id' => 2,
             'created_at' => now(),
         ]);
 

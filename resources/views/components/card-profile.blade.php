@@ -1,4 +1,4 @@
-<a href="{{route('profile', ['id' => $profile->id])}}" class="card-request">
+<a href="{{route('profile', ['id' => $profile->id])}}" class="card-admin-profile">
     <div class="card-profile">
         <div class="profile-main">
             <div class="profile-avatar">
