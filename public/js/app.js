@@ -32,5 +32,5 @@ function truncateText(selector, maxLength) {
     });
 }
 
-truncateText(".card-description", 90);
+truncateText(".card-description", 75);
 statusColor('.user-status');

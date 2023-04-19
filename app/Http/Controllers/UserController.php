@@ -89,7 +89,6 @@ class UserController extends Controller
         foreach ($newData as $key => $value) {
             if ($key === 'avatar' && $value) {
                 if (Storage::exists($user->{$key}) && $user->{$key} !== 'public/storage/avatars/base_avatar.jpeg') {
-                    dd();
                     unlink(storage_path('app/public/avatars/' . basename($user->{$key})));
                     Storage::delete($user->{$key});
                 }

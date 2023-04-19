@@ -10,7 +10,7 @@
         </ul>
         <div class="tab-content">
             <div id="signup">
-                <h1 class="title reg-title">Зарегистрироваться</h1>
+                <h1 class="title reg-title">Регистрация</h1>
                 <form action="{{route('signup')}}" method="post" autocomplete="off">
                     @csrf
                     <div class="field-wrap">

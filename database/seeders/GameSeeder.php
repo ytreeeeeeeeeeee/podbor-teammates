@@ -71,7 +71,7 @@ class GameSeeder extends Seeder
         ]);
 
         Game::factory()->create([
-            'title' => 'Overwatch 2s',
+            'title' => 'Overwatch 2',
             'image' => 'https://sm.ign.com/ign_ap/cover/o/overwatch-/overwatch-2_bybr.jpg',
         ]);
 
@@ -81,12 +81,12 @@ class GameSeeder extends Seeder
         ]);
 
         Game::factory()->create([
-            'title' => 'Tom Clancy\`s Rainbow Six Siege',
+            'title' => 'Tom Clancy`s Rainbow Six Siege',
             'image' => 'https://i.pinimg.com/originals/8c/c4/92/8cc492be438c76b99371d691d23cff8f.jpg',
         ]);
 
         Game::factory()->create([
-            'title' => 'Assassin\`s Creed Valhalla',
+            'title' => 'Assassin`s Creed Valhalla',
             'image' => 'https://seeklogo.com//images/A/assassin-s-creed-valhalla-logo-458602C18D-seeklogo.com.png',
         ]);
 
