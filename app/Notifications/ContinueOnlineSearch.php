@@ -16,11 +16,6 @@ class ContinueOnlineSearch extends Notification
     public $user_id;
     public $owner;
 
-    /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
     public function __construct($teammate_id, $user_id, $owner)
     {
         $this->teammate_id = $teammate_id;
@@ -28,23 +23,11 @@ class ContinueOnlineSearch extends Notification
         $this->owner = $owner;
     }
 
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
     public function via($notifiable)
     {
         return ['broadcast'];
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
     public function toArray($notifiable)
     {
         return [

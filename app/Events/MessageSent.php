@@ -21,11 +21,6 @@ class MessageSent implements ShouldBroadcast
     public $chat;
     public $message;
 
-    /**
-     * Create a new event instance.
-     *
-     * @return void
-     */
     public function __construct(User $author, Chat $chat, Message $message)
     {
         $this->author = $author;
@@ -33,11 +28,6 @@ class MessageSent implements ShouldBroadcast
         $this->message = $message;
     }
 
-    /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return \Illuminate\Broadcasting\Channel|array
-     */
     public function broadcastOn()
     {
         return new PrivateChannel('chat.'.$this->chat->id);

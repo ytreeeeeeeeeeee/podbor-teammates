@@ -15,22 +15,13 @@ class ResetPasswordMail extends Mailable
 
     public $token;
     public $email;
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
+
     public function __construct($email, $token)
     {
         $this->email = $email;
         $this->token = $token;
     }
 
-    /**
-     * Get the message envelope.
-     *
-     * @return \Illuminate\Mail\Mailables\Envelope
-     */
     public function envelope()
     {
         return new Envelope(
@@ -38,11 +29,6 @@ class ResetPasswordMail extends Mailable
         );
     }
 
-    /**
-     * Get the message content definition.
-     *
-     * @return \Illuminate\Mail\Mailables\Content
-     */
     public function content()
     {
         return new Content(
@@ -51,11 +37,6 @@ class ResetPasswordMail extends Mailable
         );
     }
 
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array
-     */
     public function attachments()
     {
         return [];

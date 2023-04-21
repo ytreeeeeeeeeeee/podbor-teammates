@@ -5,7 +5,6 @@ import Message from "./Message";
 function Messages() {
     const [text, setText] = useState('');
     const {getMessages, messages, activeChat, sendMessages} = useContext(ChatContext);
-    // const messagesContainer = document.getElementById('messages');
     const messageRef = useRef();
 
     useEffect(() => {
@@ -41,7 +40,6 @@ function Messages() {
                 </div>
                 <form onSubmit={send} className='form-chat'>
                     <input value={text} onChange={handleChange} />
-                    {/*<img className='send-button' src="https://img.icons8.com/ios-filled/150/e68a01/telegram.png" alt='send-message'/>*/}
                     <button className='send-button'>Отправить</button>
                 </form>
             </div>
