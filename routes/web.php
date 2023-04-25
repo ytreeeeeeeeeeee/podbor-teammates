@@ -8,17 +8,6 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\AjaxController;
 use \App\Http\Controllers\UserController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', [PageController::class, 'index'])->name('main-page')->middleware('reboot');
 Route::get('/my-requests', [PageController::class, 'my_requests'])->name('my-requests')->middleware('customAuth');
 Route::get('/profile/{id}', [PageController::class, 'profile'])->name('profile');
