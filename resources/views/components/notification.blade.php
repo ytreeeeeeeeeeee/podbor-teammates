@@ -18,13 +18,13 @@
                     <p class="user-description">{{$profile->description}}</p>
                     @if($profile->steam_link)
                         <div class="user-steam">
-                            <img src="/resources/images/icons8-steam.svg" alt="steam icon"/>
+                            <img src="/public/images/icons8-steam.svg" alt="steam icon"/>
                             <a class="user-steam--link" href="{{$profile->steam_link}}">Ссылка на профиль стим</a>
                         </div>
                     @endif
                     @if($profile->discord_link)
                         <div class="user-discord">
-                            <img src="/resources/images/icons8-discord.svg" alt="discord icon"/>
+                            <img src="/public/images/icons8-discord.svg" alt="discord icon"/>
                             <p class="user-discord--link">{{$profile->discord_link}}</p>
                         </div>
                     @endif

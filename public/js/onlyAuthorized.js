@@ -9,7 +9,5 @@ avatar.addEventListener('click', function (event) {
 });
 
 avatar.addEventListener('mouseleave', function() {
-    setTimeout(function() {
-        panel.style.display = 'none';
-    }, 2500);
+    $(panel).fadeOut(2500);
 });

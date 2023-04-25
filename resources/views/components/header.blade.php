@@ -1,11 +1,11 @@
 <header class="header">
     <nav class="main-tabs">
-        <a href="{{route('main-page')}}" class="tab">Главная</a>
-        <a href="{{route('all-requests')}}" class="tab">Заявки</a>
-        <a href="{{route('games')}}" class="tab">Игры</a>
+        <a href="{{route('main-page')}}" class="tab underline">Главная</a>
+        <a href="{{route('all-requests')}}" class="tab underline">Заявки</a>
+        <a href="{{route('games')}}" class="tab underline">Игры</a>
     @if(Auth::user())
-        <a href="{{route('add-req')}}" class="tab">Создать заявку</a>
-        <a href="{{route('online')}}" class="tab">Онлайн-подбор</a>
+        <a href="{{route('add-req')}}" class="tab underline">Создать заявку</a>
+        <a href="{{route('online')}}" class="tab underline">Онлайн-подбор</a>
     @endif
     </nav>
 
@@ -27,8 +27,8 @@
         </nav>
     @else
         <nav class="logout-menu">
-            <a href="{{route('reg-auth', ['tab' => 'login'])}}" class="logout-menu__item">Вход</a>
-            <a href="{{route('reg-auth', ['tab' => 'signup'])}}" class="logout-menu__item">Регистрация</a>
+            <a href="{{route('reg-auth', ['tab' => 'login'])}}" class="logout-menu__item underline">Вход</a>
+            <a href="{{route('reg-auth', ['tab' => 'signup'])}}" class="logout-menu__item underline">Регистрация</a>
         </nav>
     @endif
 </header>

@@ -47,7 +47,7 @@ class UserSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'FortniteFanatic',
-            'email' => ' fortnitefanatic@yahoo.com',
+            'email' => 'fortnitefanatic@yahoo.com',
             'password' => bcrypt('Fort12345'),
             'description' => 'Играю в Fortnite уже более 3 лет, участвовал в нескольких соревнованиях. Ищу людей для создания сильной команды и побед в битвах роялей.',
             'avatar' => 'public/storage/avatars/base_avatar.jpeg',
