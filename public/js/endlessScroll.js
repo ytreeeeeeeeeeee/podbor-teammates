@@ -17,7 +17,7 @@ $(window).scroll(_.debounce(function() {
                 else {
                     reqsList.innerHTML += text;
                     current_value += 20;
-                    truncateText('.card-description', 90)
+                    truncateText('.card-description', 75)
                 }
             },
             error: function (error) {

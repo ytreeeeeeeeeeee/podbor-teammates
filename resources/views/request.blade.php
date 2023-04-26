@@ -17,13 +17,13 @@
                 <p class="request-description">{{$req->description}}</p>
                 @if($author->steam_link)
                     <div class="user-steam">
-                        <img src="/resources/images/icons8-steam.svg" alt="steam icon"/>
+                        <img src="/public/images/icons8-steam.svg" alt="steam icon"/>
                         <a class="user-steam--link" href="{{$author->steam_link}}">Ссылка на профиль стим</a>
                     </div>
                 @endif
                 @if($author->discord_link)
                     <div class="user-discord">
-                        <img src="/resources/images/icons8-discord.svg" alt="discord icon"/>
+                        <img src="/public/images/icons8-discord.svg" alt="discord icon"/>
                         <p class="user-discord--link">{{$author->discord_link}}</p>
                     </div>
                 @endif
